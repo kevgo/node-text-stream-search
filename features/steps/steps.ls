@@ -13,8 +13,8 @@ module.exports = ->
 
 
   @Given /^I tell it to wait for "([^"]*)"$/, (search-term) ->
-    @called = no
-    @handler = ~> @called = yes
+    @called = 0
+    @handler = ~> @called += 1
     @instance.wait search-term, @handler
 
 
@@ -24,9 +24,11 @@ module.exports = ->
 
 
 
-  @Then /^the callback for "([^"]*)" fires$/, (search-term) ->
-    expect(@called).to.be.true
+  @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term) ->
+    expect(@called).to.equal 1
 
 
   @Then /^the callback for "([^"]*)" does not fire$/, (search-term) ->
-    expect(@called).to.be.false
+    expect(@called).to.equal 0
+
+
