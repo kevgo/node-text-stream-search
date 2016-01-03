@@ -15,6 +15,7 @@ Feature: Recognizing text in streams
   Background:
     Given a TextStreamSearch instance
 
+
   Scenario: the text stream emits the expected string in one piece
     Given I tell it to wait for "hello"
     When the stream emits "So I said hello to her"
