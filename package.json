@@ -5,7 +5,7 @@
   "main": "lib/text-stream-search.js",
   "scripts": {
     "postpublish": "git push && git push --tags",
-    "prepublish": "build",
+    "prepublish": "bin/build",
     "preversion": "npm test",
     "test": "cucumber-js",
     "update": "david update"
