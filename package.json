@@ -4,7 +4,11 @@
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "main": "lib/text-stream-search.js",
   "scripts": {
-    "test": "cucumber-js"
+    "postpublish": "git push && git push --tags",
+    "prepublish": "build",
+    "preversion": "npm test",
+    "test": "cucumber-js",
+    "update": "david update"
   },
   "repository": {
     "type": "git",
