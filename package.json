@@ -1,0 +1,19 @@
+{
+  "name": "node-text-stream-search",
+  "version": "0.0.1",
+  "description": "Searches for occurrences of a given search term in Node.js text streams",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
+  },
+  "author": "Kevin Goslar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Originate/node-text-stream-search/issues"
+  },
+  "homepage": "https://github.com/Originate/node-text-stream-search#readme"
+}
