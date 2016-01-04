@@ -24,7 +24,8 @@ Feature: Recognizing text in streams
 
   Scenario: the text stream emits the expected string in several pieces
     Given I tell it to wait for "hello"
-    When the stream emits "So I said hello to her"
+    When the stream emits "So I said hel"
+    And the stream emits "lo to her"
     Then the callback for "hello" fires
 
 
