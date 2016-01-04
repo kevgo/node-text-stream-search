@@ -1,6 +1,6 @@
 {
   "name": "text-stream-search",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "main": "lib/text-stream-search.js",
   "scripts": {
