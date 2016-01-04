@@ -30,3 +30,8 @@ with the environment variable `DEBUG` set to `text-stream-search` or `*`.
 
 * [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing with regular expressions,
   but is buggy and blocks the event queue
+
+
+## Development
+
+See our [developer guidelines](CONTRIBUTING.md)
