@@ -1,6 +1,9 @@
+debug = require('debug')('text-stream-search')
+
+
 class TextStreamSearch
 
-  (@stream, @options = { verbose: no }) ->
+  (@stream) ->
     @stream.on 'data', @_on-output
 
     # the strings to search for
@@ -16,10 +19,10 @@ class TextStreamSearch
     @_check-searches!
 
 
-  # Called when new console output arrives
+  # Called when new text arrives
   _on-output: (data) ~>
     text = data.toString!
-    console.log text if @options.verbose
+    debug "add text: '#{text}'"
     @_output += text
     @_check-searches!
 
@@ -29,6 +32,7 @@ class TextStreamSearch
   _check-searches: ->
     for i from @_searches.length-1 to 0 by -1
       if @_output.includes @_searches[i].text
+        debug "found match: '#{@_searches[i].text}'"
         @_searches[i].handler!
         @_searches.splice i, 1
 

@@ -16,8 +16,12 @@ new TextStreamSearch(@stream).wait('hello', function() { console.log('found hell
 // the callback above is called exactly once.
 ```
 
-More information about:
-* the [wait](features/wait.feature) command
+More details about the wait command is [here](features/wait.feature).
+
+TextStreamSearch uses the [debug](https://github.com/visionmedia/debug)
+library.
+To see the parsed text, run your code that uses TextStreamSearch
+with the environment variable `DEBUG` set to `text-stream-search` or `*`.
 
 
 ## Related Projects
