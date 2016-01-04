@@ -12,9 +12,9 @@ Super simple and robust way to reliably recognize text in text streams.
 
 streamSearch = require('text-stream-search');
 
-new TextStreamSearch(@stream).wait('hello', function() { console.log('found hello') });
+new TextStreamSearch(myStream).wait('hello', function() { console.log('found hello') });
 
-// Now if the stream contains the someting including the word "hello",
+// Now if the given stream emits someting including the word "hello",
 // the callback above is called exactly once.
 ```
 
