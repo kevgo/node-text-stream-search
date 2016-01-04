@@ -27,6 +27,7 @@
     "memory-streams": "^0.1.0"
   },
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "text-stream-accumulator": "^0.1.0"
   }
 }
