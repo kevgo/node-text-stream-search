@@ -4,6 +4,7 @@
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "main": "lib/text-stream-search.js",
   "scripts": {
+    "lint-dependencies": "dependency-lint",
     "postpublish": "git push && git push --tags",
     "postupdate": "npm test",
     "prepublish": "bin/build",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "cucumber": "^0.9.2",
+    "dependency-lint": "^3.1.1",
     "livescript": "^1.4.0",
     "memory-streams": "^0.1.0"
   },
