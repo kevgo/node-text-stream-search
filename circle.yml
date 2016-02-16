@@ -6,3 +6,4 @@ machine:
 test:
   pre:
     - bin/build
+    - npm run lint-dependencies
