@@ -17,32 +17,32 @@ Feature: Recognizing text in streams
 
 
   Scenario: the text stream emits the expected string in one piece
-    Given I tell it to wait for "hello"
-    When the stream emits "So I said hello to her"
+    When I tell it to wait for "hello"
+    And the stream emits "So I said hello to her"
     Then the callback for "hello" fires
 
 
   Scenario: the text stream emits the expected string in several pieces
-    Given I tell it to wait for "hello"
-    When the stream emits "So I said hel"
+    When I tell it to wait for "hello"
+    And the stream emits "So I said hel"
     And the stream emits "lo to her"
     Then the callback for "hello" fires
 
 
   Scenario: Calling "wait" when the text stream already emitted the expected string
-    Given the stream emits "So I said hello to her"
-    When I tell it to wait for "hello"
+    When the stream emits "So I said hello to her"
+    And I tell it to wait for "hello"
     Then the callback for "hello" fires
 
 
   Scenario: the text stream emits the expected string multiple times
-    Given I tell it to wait for "hello"
-    When the stream emits "So I said hello to her"
+    When I tell it to wait for "hello"
+    And the stream emits "So I said hello to her"
     And the stream emits "And I said hello to her again"
     Then the callback for "hello" fires only once
 
 
   Scenario: The expected text stream never contains the search term
-    Given I tell it to wait for "hello"
-    When the stream emits "So I said hi to her"
+    When I tell it to wait for "hello"
+    And the stream emits "So I said hi to her"
     Then the callback for "hello" does not fire
