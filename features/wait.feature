@@ -46,3 +46,21 @@ Feature: Recognizing text in streams
     When I tell it to wait for "hello"
     And the stream emits "So I said hi to her"
     Then the callback for "hello" does not fire
+
+
+  Scenario: Multiple sequential searches
+    When I tell it to wait for "one"
+    And the stream emits "one"
+    Then the callback for "one" fires
+    When I tell it to wait for "two"
+    And the stream emits "two"
+    Then the callback for "two" fires
+
+
+  Scenario: Multiple concurrent searches
+    When I tell it to wait for "one"
+    When I tell it to wait for "two"
+    And the stream emits "two"
+    Then the callback for "two" fires
+    When the stream emits "one"
+    Then the callback for "one" fires
