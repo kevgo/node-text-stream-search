@@ -7,7 +7,7 @@
     "postpublish": "git push && git push --tags",
     "prepublish": "bin/build",
     "preversion": "bin/spec && bin/check-update",
-    "test": "cucumber-js"
+    "test": "bin/spec"
   },
   "repository": {
     "type": "git",
