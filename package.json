@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Originate/node-text-stream-search#readme",
   "license": "ISC",
-  "main": "lib/text-stream-search.js",
+  "main": "dist/text-stream-search.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
