@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$#" == "0" ]; then
+  bin/build
   bin/lint
   cucumber-js
 else
