@@ -25,10 +25,10 @@ module.exports = ->
 
 
   @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term) ->
-    process.next-tick ~>
+    set-immediate ~>
       expect(@called).to.equal 1
 
 
   @Then /^the callback for "([^"]*)" does not fire$/, (search-term) ->
-    process.next-tick ~>
+    set-immediate ~>
       expect(@called).to.equal 0
