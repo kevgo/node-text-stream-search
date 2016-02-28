@@ -59,7 +59,7 @@
     },
     "chai": {
       "version": "3.5.0",
-      "from": "chai@>=3.4.1 <4.0.0",
+      "from": "chai@3.5.0",
       "resolved": "https://registry.npmjs.org/chai/-/chai-3.5.0.tgz"
     },
     "cli-color": {
@@ -101,7 +101,7 @@
     },
     "cucumber": {
       "version": "0.9.5",
-      "from": "cucumber@>=0.9.2 <0.10.0",
+      "from": "cucumber@0.9.5",
       "resolved": "https://registry.npmjs.org/cucumber/-/cucumber-0.9.5.tgz"
     },
     "cucumber-html": {
@@ -116,7 +116,7 @@
     },
     "debug": {
       "version": "2.2.0",
-      "from": "debug@>=2.2.0 <3.0.0",
+      "from": "debug@2.2.0",
       "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
     },
     "deep-eql": {
@@ -270,7 +270,7 @@
     },
     "livescript": {
       "version": "1.4.0",
-      "from": "livescript@>=1.4.0 <2.0.0",
+      "from": "livescript@1.4.0",
       "resolved": "https://registry.npmjs.org/livescript/-/livescript-1.4.0.tgz"
     },
     "lodash": {
@@ -295,7 +295,7 @@
     },
     "memory-streams": {
       "version": "0.1.0",
-      "from": "memory-streams@>=0.1.0 <0.2.0",
+      "from": "memory-streams@0.1.0",
       "resolved": "https://registry.npmjs.org/memory-streams/-/memory-streams-0.1.0.tgz"
     },
     "minimatch": {
@@ -2067,7 +2067,7 @@
     },
     "text-stream-accumulator": {
       "version": "0.1.1",
-      "from": "text-stream-accumulator@>=0.1.0 <0.2.0",
+      "from": "text-stream-accumulator@0.1.1",
       "resolved": "https://registry.npmjs.org/text-stream-accumulator/-/text-stream-accumulator-0.1.1.tgz"
     },
     "timers-ext": {
