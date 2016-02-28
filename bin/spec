@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-cucumber-js "$@"
+if [ "$#" == "0" ]; then
+  bin/lint
+  cucumber-js
+else
+  cucumber-js "$@"
+fi

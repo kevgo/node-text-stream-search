@@ -11,6 +11,7 @@
 
 ```
 $ spec
+$ lint
 ```
 
 The spec runs against the compiled output in `lib`,
@@ -28,5 +29,5 @@ $ update
 ## Deploy a new version
 
 ```
-publish <patch|minor|major>
+$ publish <patch|minor|major>
 ```
