@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-find ./src -name '*.ls' | xargs lsc --compile --output lib/
+lsc --compile --output dist src
