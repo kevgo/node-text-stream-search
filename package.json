@@ -15,6 +15,10 @@
     "memory-streams": "0.1.0",
     "o-tools": "0.1.4"
   },
+  "files": [
+    "dist",
+    "npm-shrinkwrap.json"
+  ],
   "homepage": "https://github.com/Originate/node-text-stream-search#readme",
   "license": "ISC",
   "main": "dist/text-stream-search.js",
