@@ -10,7 +10,7 @@
 ## Run tests
 
 ```
-npm test
+$ spec
 ```
 
 The spec runs against the compiled output in `lib`,
@@ -21,13 +21,12 @@ so make sure you have [bin/watch](bin/watch) running in the background.
 ## Update dependencies
 
 ```
-npm run update
+$ update
 ```
 
 
 ## Deploy a new version
 
 ```
-npm version <patch|minor|major>
-npm publish
+publish <patch|minor|major>
 ```
