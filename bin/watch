@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 while true; do
-  lsc --watch --output lib src
+  lsc --watch --output dist src
 done

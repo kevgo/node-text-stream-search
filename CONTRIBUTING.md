@@ -14,7 +14,7 @@ $ spec
 $ lint
 ```
 
-The spec runs against the compiled output in `lib`,
+The spec runs against the compiled output in `dist`,
 not the source code in `src`,
 so make sure you have [bin/watch](bin/watch) running in the background.
 
