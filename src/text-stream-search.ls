@@ -16,6 +16,11 @@ class TextStreamSearch
     @_output = new TextStreamAccumulator stream
 
 
+  # Returns the full text received from the stream so far
+  full-text: ->
+    @_output.to-string!
+
+
   # Calls the given handler when the given text shows up in the output
   wait: (text, handler) ->
     @_searches.push {text, handler}

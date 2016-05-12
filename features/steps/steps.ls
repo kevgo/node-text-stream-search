@@ -19,9 +19,17 @@ module.exports = ->
 
 
 
+  @When /^calling 'fullText\(\)' on that instance$/, ->
+    @result = @instance.full-text!
+
+
   @When /^the stream emits "([^"]*)"$/, (text) ->
     @stream.append text
 
+
+
+  @Then /^it returns "([^"]*)"$/, (expected-text) ->
+    expect(@result).to.equal expected-text
 
 
   @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term) ->
