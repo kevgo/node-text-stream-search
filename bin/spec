@@ -2,8 +2,7 @@
 set -e
 
 if [ "$#" == "0" ]; then
-  bin/build
-  bin/lint
+  lint
   cucumber-js
 else
   cucumber-js "$@"
