@@ -264,9 +264,9 @@
       "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-3.6.1.tgz"
     },
     "jsonfile": {
-      "version": "2.3.0",
+      "version": "2.3.1",
       "from": "jsonfile@>=2.1.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/jsonfile/-/jsonfile-2.3.0.tgz"
+      "resolved": "https://registry.npmjs.org/jsonfile/-/jsonfile-2.3.1.tgz"
     },
     "klaw": {
       "version": "1.2.0",
@@ -2119,9 +2119,31 @@
       "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz"
     },
     "text-stream-accumulator": {
-      "version": "0.1.1",
-      "from": "text-stream-accumulator@0.1.1",
-      "resolved": "https://registry.npmjs.org/text-stream-accumulator/-/text-stream-accumulator-0.1.1.tgz"
+      "version": "0.2.0",
+      "from": "text-stream-accumulator@0.2.0",
+      "resolved": "https://registry.npmjs.org/text-stream-accumulator/-/text-stream-accumulator-0.2.0.tgz",
+      "dependencies": {
+        "d": {
+          "version": "0.1.1",
+          "from": "d@>=0.1.1 <0.2.0",
+          "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz"
+        },
+        "es5-ext": {
+          "version": "0.10.11",
+          "from": "es5-ext@>=0.10.2 <0.11.0",
+          "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.11.tgz"
+        },
+        "es6-iterator": {
+          "version": "2.0.0",
+          "from": "es6-iterator@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-2.0.0.tgz"
+        },
+        "es6-symbol": {
+          "version": "3.0.2",
+          "from": "es6-symbol@>=3.0.2 <3.1.0",
+          "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-3.0.2.tgz"
+        }
+      }
     },
     "timers-ext": {
       "version": "0.1.0",
