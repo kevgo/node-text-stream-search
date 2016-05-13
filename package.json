@@ -13,7 +13,8 @@
     "dependency-lint": "4.0.1",
     "livescript": "1.4.0",
     "memory-streams": "0.1.0",
-    "o-tools": "0.2.0"
+    "o-tools": "0.2.0",
+    "o-tools-livescript": "1.0.2"
   },
   "engines": {
     "npm": ">= 3.0.0"
@@ -30,7 +31,7 @@
     "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
   },
   "scripts": {
-    "prepublish": "bin/build",
+    "prepublish": "node_modules/.bin/build",
     "test": "bin/spec"
   }
 }

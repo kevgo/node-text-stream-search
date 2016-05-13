@@ -2053,6 +2053,11 @@
         }
       }
     },
+    "o-tools-livescript": {
+      "version": "1.0.2",
+      "from": "o-tools-livescript@latest",
+      "resolved": "https://registry.npmjs.org/o-tools-livescript/-/o-tools-livescript-1.0.2.tgz"
+    },
     "once": {
       "version": "1.3.3",
       "from": "once@>=1.3.0 <2.0.0",
