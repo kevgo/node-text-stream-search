@@ -14,7 +14,7 @@
     "livescript": "1.4.0",
     "memory-streams": "0.1.0",
     "o-tools": "0.2.0",
-    "o-tools-livescript": "1.0.2"
+    "o-tools-livescript": "1.0.3"
   },
   "engines": {
     "npm": ">= 3.0.0"
