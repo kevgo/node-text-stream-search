@@ -9,12 +9,12 @@
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
     "chai": "3.5.0",
-    "cucumber": "0.10.2",
+    "cucumber": "0.10.3",
     "dependency-lint": "4.0.1",
-    "livescript": "1.4.0",
+    "livescript": "1.5.0",
     "memory-streams": "0.1.0",
-    "o-tools": "0.2.0",
-    "o-tools-livescript": "1.0.3"
+    "o-tools": "0.3.4",
+    "o-tools-livescript": "1.0.4"
   },
   "engines": {
     "npm": ">= 3.0.0"

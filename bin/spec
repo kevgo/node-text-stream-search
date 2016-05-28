@@ -2,8 +2,8 @@
 set -e
 
 if [ "$#" == "0" ]; then
-  lint
-  cucumber-js
+  node_modules/o-tools/bin/lint
+  node_modules/cucumber/bin/cucumber.js
 else
   cucumber-js "$@"
 fi
