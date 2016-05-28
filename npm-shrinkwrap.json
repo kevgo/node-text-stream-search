@@ -109,6 +109,11 @@
       "from": "cucumber-html@>=0.2.3 <0.3.0",
       "resolved": "https://registry.npmjs.org/cucumber-html/-/cucumber-html-0.2.3.tgz"
     },
+    "cucumber-snippets-livescript": {
+      "version": "1.0.1",
+      "from": "cucumber-snippets-livescript@latest",
+      "resolved": "https://registry.npmjs.org/cucumber-snippets-livescript/-/cucumber-snippets-livescript-1.0.1.tgz"
+    },
     "d": {
       "version": "0.1.1",
       "from": "d@>=0.1.1 <0.2.0",
