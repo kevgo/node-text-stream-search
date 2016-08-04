@@ -18,6 +18,11 @@ module.exports = ->
     @instance.wait search-term, @handler
 
 
+  @Given /^a TextStreamSearch instance with accumulated text$/ ->
+    stream = new ReadableStream ''
+    @instance = new TextStreamSearch stream
+    stream.append "hello world"
+
 
   @When /^calling 'fullText\(\)' on that instance$/, ->
     @result = @instance.full-text!
@@ -27,9 +32,16 @@ module.exports = ->
     @stream.append text
 
 
+  @When /^calling the "([^"]*)" method$/ (method-name) ->
+    @instance[method-name]!
+
 
   @Then /^it returns "([^"]*)"$/, (expected-text) ->
     expect(@result).to.equal expected-text
+
+
+  @Then /^its accumulated text is empty$/ ->
+    expect(@instance.full-text!).to.be.empty
 
 
   @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term) ->
