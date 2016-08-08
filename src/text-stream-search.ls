@@ -43,6 +43,8 @@ class TextStreamSearch
         @_searches[i].handler!
         @_searches.splice i, 1
 
+  reset: ->
+    @_output.reset!
 
 
 module.exports = TextStreamSearch

@@ -4,18 +4,18 @@
   "author": "Kevin Goslar",
   "dependencies": {
     "debug": "2.2.0",
-    "text-stream-accumulator": "0.2.0"
+    "text-stream-accumulator": "0.3.0"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
     "chai": "3.5.0",
-    "cucumber": "0.10.3",
+    "cucumber": "1.2.1",
     "cucumber-snippets-livescript": "1.0.1",
-    "dependency-lint": "4.0.1",
+    "dependency-lint": "4.1.0",
     "livescript": "1.5.0",
     "memory-streams": "0.1.0",
-    "o-tools": "0.3.4",
-    "o-tools-livescript": "1.0.4"
+    "o-tools": "0.4.18",
+    "o-tools-livescript": "1.1.2"
   },
   "engines": {
     "npm": ">= 3.0.0"
