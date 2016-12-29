@@ -24,6 +24,12 @@ module.exports = ->
     stream.append "hello world"
 
 
+  @When /^I tell it to wait for the regular expression "([^"]*)"$/ (search-term) ->
+    @called = 0
+    @handler = ~> @called += 1
+    @instance.wait new RegExp(search-term), @handler
+
+
   @When /^calling 'fullText\(\)' on that instance$/, ->
     @result = @instance.full-text!
 
