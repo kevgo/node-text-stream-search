@@ -47,6 +47,7 @@ module.exports = ->
   @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term, done) ->
     set-immediate ~>
       expect(@called).to.equal 1
+      @called = 0
       done!
 
 
