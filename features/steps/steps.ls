@@ -44,11 +44,13 @@ module.exports = ->
     expect(@instance.full-text!).to.be.empty
 
 
-  @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term) ->
+  @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term, done) ->
     set-immediate ~>
       expect(@called).to.equal 1
+      done!
 
 
-  @Then /^the callback for "([^"]*)" does not fire$/, (search-term) ->
+  @Then /^the callback for "([^"]*)" does not fire$/, (search-term, done) ->
     set-immediate ~>
       expect(@called).to.equal 0
+      done!
