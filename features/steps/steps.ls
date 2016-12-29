@@ -15,7 +15,7 @@ module.exports = ->
   @Given /^I tell it to wait for "([^"]*)"$/, (search-term) ->
     @called = 0
     @handler = ~> @called += 1
-    @instance.wait new RegExp(search-term), @handler
+    @instance.wait search-term, @handler
 
 
   @Given /^a TextStreamSearch instance with accumulated text$/ ->
