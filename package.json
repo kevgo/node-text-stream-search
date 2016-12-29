@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "author": "Kevin Goslar",
   "dependencies": {
-    "debug": "2.5.2",
+    "debug": "2.6.0",
     "text-stream-accumulator": "0.3.0"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
