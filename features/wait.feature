@@ -1,7 +1,7 @@
 Feature: Recognizing text in streams
 
   As a developer
-  I want to be notified when a text stream contains a given string
+  I want to be notified when a text stream contains a given regular expression
   So that my code has the ability to wait until something that creates output has happened.
 
 
@@ -64,3 +64,9 @@ Feature: Recognizing text in streams
     Then the callback for "two" fires
     When the stream emits "one"
     Then the callback for "one" fires
+
+
+  Scenario: using regex in search parameter
+    When I tell it to wait for "online at port \d+"
+    And the stream emits "online at port 3000"
+    Then the callback for "online at port \d+" fires

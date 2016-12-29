@@ -38,7 +38,7 @@ class TextStreamSearch
   # Called each time the text or search terms change.
   _check-searches: ->
     for i from @_searches.length-1 to 0 by -1
-      if @_output.toString!.includes @_searches[i].text
+      if result = @_output.toString!.match @_searches[i].text
         debug "found match: '#{@_searches[i].text}'"
         @_searches[i].handler!
         @_searches.splice i, 1
