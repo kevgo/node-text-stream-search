@@ -4,7 +4,7 @@
   "author": "Kevin Goslar",
   "dependencies": {
     "debug": "2.6.0",
-    "text-stream-accumulator": "0.3.1"
+    "text-stream-accumulator": "0.3.3"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
