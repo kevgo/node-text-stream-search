@@ -59,12 +59,14 @@ Feature: Recognizing text in streams
 
 
   Scenario: Multiple concurrent searches
-    When I tell it to wait for "one"
-    When I tell it to wait for "two"
-    And the stream emits "two"
-    Then the callback for "two" fires
+    Given I tell it to wait for "one"
+    And I tell it to wait for "two"
     When the stream emits "one"
     Then the callback for "one" fires
+    And the callback for "two" does not fire
+    When the stream emits "two"
+    Then the callback for "two" fires
+    And the callback for "one" does not fire again
 
 
   Scenario: search for a regular expression

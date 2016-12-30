@@ -4,7 +4,7 @@
   "author": "Kevin Goslar",
   "dependencies": {
     "debug": "2.6.0",
-    "text-stream-accumulator": "0.3.0"
+    "text-stream-accumulator": "0.3.1"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
@@ -15,7 +15,8 @@
     "livescript": "1.5.0",
     "memory-streams": "0.1.0",
     "o-tools": "0.7.0",
-    "o-tools-livescript": "1.2.3"
+    "o-tools-livescript": "1.2.3",
+    "wait": "0.1.0"
   },
   "engines": {
     "npm": ">= 3.0.0"

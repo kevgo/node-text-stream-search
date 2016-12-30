@@ -1,4 +1,6 @@
 require! {
+  './regex-search' : RegexSearch
+  './string-search' : StringSearch
   'text-stream-accumulator' : TextStreamAccumulator
 }
 debug = require('debug')('text-stream-search')
@@ -7,29 +9,42 @@ debug = require('debug')('text-stream-search')
 class TextStreamSearch
 
   (stream) ->
-    stream.on 'data', @_on-data
+    stream.on 'data', @_on-stream-data
 
-    # the strings to search for
     @_searches = []
 
     # the output captured so far
-    @_output = new TextStreamAccumulator stream
+    @_accumulator = new TextStreamAccumulator stream
 
 
   # Returns the full text received from the stream so far
   full-text: ->
-    @_output.to-string!
+    @_accumulator.to-string!
+
+
+  reset: ->
+    @_accumulator.reset!
 
 
   # Calls the given handler when the given text shows up in the output
   wait: (text, handler) ->
-    @_searches.push {text, handler}
+    debug "adding search for: #{text}"
+    @_searches.push @_create-search-instance text, handler
     @_check-searches!
 
 
+  _create-search-instance: (text, handler) ->
+    switch (text-type = typeof! text)
+      | 'String'  =>  new StringSearch text, handler
+      | 'RegExp'  =>  new RegexSearch text, handler
+      | _         =>  throw new Error "unknown data type to wait for: #{text-type}"
+
+
   # Called when new text arrives
-  _on-data: (data) ~>
-    debug "add text: '#{data.toString!}'"
+  _on-stream-data: (data) ~>
+    debug "receiving text: '#{data.toString!}'"
+
+    # need to wait for the next tick to give the accumulator time to update
     process.next-tick ~>
       @_check-searches!
 
@@ -37,16 +52,10 @@ class TextStreamSearch
   # Looks for new matches in the received text.
   # Called each time the text or search terms change.
   _check-searches: ->
-    for i from @_searches.length-1 to 0 by -1
-      if (switch typeof @_searches[i].text
-            | 'string' => @_output.toString!.includes @_searches[i].text
-            | _        => @_output.toString!.match @_searches[i].text)
-        debug "found match: '#{@_searches[i].text}'"
-        @_searches[i].handler!
-        @_searches.splice i, 1
+    text = @full-text!
+    for search in @_searches
+      search.check text
 
-  reset: ->
-    @_output.reset!
 
 
 module.exports = TextStreamSearch

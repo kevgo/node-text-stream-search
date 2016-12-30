@@ -2,6 +2,7 @@ require! {
   '../..' : TextStreamSearch
   'chai' : {expect}
   'memory-streams' : {ReadableStream}
+  'wait' : {wait}
 }
 
 
@@ -13,8 +14,8 @@ module.exports = ->
 
 
   @Given /^I tell it to wait for "([^"]*)"$/, (search-term) ->
-    @called = 0
-    @handler = ~> @called += 1
+    (@calls or= {})[search-term] or= 0
+    @handler = ~> @calls[search-term] += 1
     @instance.wait search-term, @handler
 
 
@@ -25,8 +26,8 @@ module.exports = ->
 
 
   @When /^I tell it to wait for the regular expression "([^"]*)"$/ (search-term) ->
-    @called = 0
-    @handler = ~> @called += 1
+    (@calls or= {})[search-term] or= 0
+    @handler = ~> @calls[search-term] += 1
     @instance.wait new RegExp(search-term), @handler
 
 
@@ -51,13 +52,18 @@ module.exports = ->
 
 
   @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term, done) ->
-    set-immediate ~>
-      expect(@called).to.equal 1
-      @called = 0
+    wait 1, ~>
+      expect(@calls[search-term]).to.equal 1
       done!
 
 
   @Then /^the callback for "([^"]*)" does not fire$/, (search-term, done) ->
-    set-immediate ~>
-      expect(@called).to.equal 0
+    wait 1, ~>
+      expect(@calls[search-term]).to.equal 0
+      done!
+
+
+  @Then /^the callback for "([^"]*)" does not fire again$/ (search-term, done) ->
+    wait 1, ~>
+      expect(@calls[search-term]).to.equal 1
       done!
