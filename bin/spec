@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+node_modules/o-tools-livescript/bin/build
+
 if [ "$#" == "0" ]; then
   node_modules/o-tools/bin/lint
   node_modules/cucumber/bin/cucumber.js
