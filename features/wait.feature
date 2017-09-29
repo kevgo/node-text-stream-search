@@ -22,6 +22,13 @@ Feature: Recognizing text in streams
     Then the callback for "hello" fires
 
 
+  Scenario: the text stream emits the expected string in one piece
+    Given I tell it to wait for "hello" with a timeout of 1000 milliseconds
+    When the stream emits "So I said hello to her"
+    Then the callback for "hello" fires
+    And after 1500 milliseconds the callback for "hello" has not fired again
+
+
   Scenario: the text stream emits the expected string in several pieces
     Given I tell it to wait for "hello"
     When the stream emits "So I said hel"
@@ -46,6 +53,15 @@ Feature: Recognizing text in streams
     Given I tell it to wait for "hello"
     When the stream emits "So I said hi to her"
     Then the callback for "hello" does not fire
+
+
+  Scenario: The expected text stream never contains the search term (with timeout)
+    Given I tell it to wait for "hello" with a timeout of 1000 milliseconds
+    When the stream emits "So I said hi to her"
+    Then within 1500 milliseconds the callback for "hello" fires with the error:
+      """
+      Expected 'So I said hi to her' to include string 'hello'
+      """
 
 
   Scenario: Multiple sequential searches
