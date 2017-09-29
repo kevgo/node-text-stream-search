@@ -23,5 +23,7 @@ $ update
 ## Deploy a new version
 
 ```
-$ publish <patch|minor|major>
+$ yarn version
+$ git push
+$ git push --tags // CI will publish to NPM
 ```
