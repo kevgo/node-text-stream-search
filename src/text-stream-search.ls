@@ -27,17 +27,17 @@ class TextStreamSearch
 
 
   # Calls the given handler when the given text shows up in the output
-  wait: (text, handler) ->
-    debug "adding search for: #{text}"
-    @_searches.push @_create-search-instance text, handler
+  wait: (query, handler, timeout) ->
+    debug "adding search for: #{query}"
+    @_searches.push @_create-search-instance query, handler, timeout
     @_check-searches!
 
 
-  _create-search-instance: (text, handler) ->
-    switch (text-type = typeof! text)
-      | 'String'  =>  new StringSearch text, handler
-      | 'RegExp'  =>  new RegexSearch text, handler
-      | _         =>  throw new Error "unknown data type to wait for: #{text-type}"
+  _create-search-instance: (query, handler, timeout) ->
+    switch (query-type = typeof! query)
+      | 'String'  =>  new StringSearch {accumulator: @_accumulator, handler, query, timeout}
+      | 'RegExp'  =>  new RegexSearch {accumulator: @_accumulator, handler, query, timeout}
+      | _         =>  throw new Error "unknown data type to wait for: #{query-type}"
 
 
   # Called when new text arrives
