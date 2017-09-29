@@ -60,7 +60,7 @@ module.exports = ->
   @Then /^the callback for "([^"]*)" fires(?: only once)?$/, (search-term, done) ->
     wait 1, ~>
       expect(@calls[search-term]).to.equal 1
-      expect(@err).to.equal undefined
+      expect(@err).to.be.undefined
       done!
 
 
@@ -73,7 +73,7 @@ module.exports = ->
   @Then /^the callback for "([^"]*)" does not fire again$/ (search-term, done) ->
     wait 1, ~>
       expect(@calls[search-term]).to.equal 1
-      expect(@err).to.equal undefined
+      expect(@err).to.be.undefined
       done!
 
 
@@ -84,8 +84,8 @@ module.exports = ->
       done!
 
 
-  @Then /^after (\d+) milliseconds the callback for "([^"]*)" has not fired again$/ (delay, search-term, done) ->
+  @Then /^within (\d+) milliseconds the callback for "([^"]*)" has not fired again$/ (delay, search-term, done) ->
     wait parseInt(delay), ~>
       expect(@calls[search-term]).to.equal 1
-      expect(@err).to.equal undefined
+      expect(@err).to.be.undefined
       done!

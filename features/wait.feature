@@ -26,7 +26,7 @@ Feature: Recognizing text in streams
     Given I tell it to wait for "hello" with a timeout of 1000 milliseconds
     When the stream emits "So I said hello to her"
     Then the callback for "hello" fires
-    And after 1500 milliseconds the callback for "hello" has not fired again
+    And within 1500 milliseconds the callback for "hello" has not fired again
 
 
   Scenario: the text stream emits the expected string in several pieces
