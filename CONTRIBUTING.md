@@ -3,7 +3,7 @@
 
 ## Setup
 
-* `npm i`
+* `yarn install`
 * add `./bin/` to your PATH
 
 
