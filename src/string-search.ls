@@ -1,34 +1,24 @@
-debug = require('debug')('text-stream-search')
+require! {
+  './base-search' : BaseSearch
+}
 
 
 # Calls the given handler exactly one time
 # when text matches the given string
-class StringSearch
+class StringSearch extends BaseSearch
 
-  (@search-text, @handler) ->
-    @called = no
+  ({query: @search-text}) ->
+    super ...
 
 
-  # Checks for matches in the given text
-  #
-  # disables after the first match,
-  # subsequent calls are ignored
-  check: (text) ->
-    | @called        =>  return
-    | @matches text  =>  @_found-match text
+  # Returns the display name for debug / error messages
+  get-display-name: ->
+    "string '#{@search-text}'"
 
 
   # Returns whether the given text contains the search text this search is looking for
   matches: (text) ->
     text.includes @search-text
-
-
-  # called when a match is found
-  _found-match: (text) ->
-    debug "found match for string '#{@search-text}'"
-    @called = yes
-    process.next-tick @handler
-
 
 
 module.exports = StringSearch
