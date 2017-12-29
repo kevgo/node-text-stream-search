@@ -1,7 +1,10 @@
 machine:
   node:
-    version: 5.7.0
+    version: 8.4.0
 
+dependencies:
+  override:
+    - yarn
 
 test:
 
