@@ -14,7 +14,7 @@ test:
 
   override:
     - node_modules/o-tools/bin/lint
-    - cucumber-js --format json:$CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
+    - node_modules/cucumber/bin/cucumber.js --format json:$CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
 
 
 deployment:
