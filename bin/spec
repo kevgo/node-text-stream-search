@@ -7,5 +7,5 @@ if [ "$#" == "0" ]; then
   node_modules/o-tools/bin/lint
   node_modules/cucumber/bin/cucumber.js
 else
-  env DEBUG='*' cucumber-js "$@"
+  env DEBUG='*' node_modules/cucumber/bin/cucumber.js "$@"
 fi

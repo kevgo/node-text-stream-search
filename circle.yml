@@ -1,7 +1,10 @@
 machine:
   node:
-    version: 5.7.0
+    version: 8.4.0
 
+dependencies:
+  override:
+    - yarn
 
 test:
 
@@ -11,7 +14,7 @@ test:
 
   override:
     - node_modules/o-tools/bin/lint
-    - cucumber-js --format json:$CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
+    - node_modules/cucumber/bin/cucumber.js --format json:$CIRCLE_TEST_REPORTS/cucumber/tests.cucumber
 
 
 deployment:
