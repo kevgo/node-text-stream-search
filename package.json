@@ -13,7 +13,7 @@
     "dependency-lint": "5.0.1",
     "livescript": "1.5.0",
     "memory-streams": "0.1.2",
-    "o-tools": "0.8.47",
+    "o-tools": "0.9.0",
     "o-tools-livescript": "1.2.3",
     "wait": "0.1.0"
   },
