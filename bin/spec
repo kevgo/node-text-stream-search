@@ -9,3 +9,5 @@ if [ "$#" == "0" ]; then
 else
   env DEBUG='*' node_modules/cucumber/bin/cucumber.js "$@"
 fi
+
+node_modules/.bin/flow
