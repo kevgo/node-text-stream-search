@@ -19,46 +19,32 @@ Feature: Recognizing text in streams
   Scenario: the text stream emits the expected string in one piece
     Given I tell it to wait for "hello"
     When the stream emits "So I said hello to her"
-    Then the callback for "hello" fires
-
-
-  Scenario: the text stream emits the expected string in one piece
-    Given I tell it to wait for "hello" with a timeout of 1000 milliseconds
-    When the stream emits "So I said hello to her"
-    Then the callback for "hello" fires
-    And within 1500 milliseconds the callback for "hello" has not fired again
+    Then the promise for "hello" resolves
 
 
   Scenario: the text stream emits the expected string in several pieces
     Given I tell it to wait for "hello"
     When the stream emits "So I said hel"
     And the stream emits "lo to her"
-    Then the callback for "hello" fires
+    Then the promise for "hello" resolves
 
 
   Scenario: Calling "wait" when the text stream already emitted the expected string
     Given the stream emits "So I said hello to her"
     When I tell it to wait for "hello"
-    Then the callback for "hello" fires
-
-
-  Scenario: the text stream emits the expected string multiple times
-    Given I tell it to wait for "hello"
-    When the stream emits "So I said hello to her"
-    And the stream emits "And I said hello to her again"
-    Then the callback for "hello" fires only once
+    Then the promise for "hello" resolves
 
 
   Scenario: The expected text stream never contains the search term
     Given I tell it to wait for "hello"
     When the stream emits "So I said hi to her"
-    Then the callback for "hello" does not fire
+    Then the promise for "hello" does not resolve
 
 
   Scenario: The expected text stream never contains the search term (with timeout)
     Given I tell it to wait for "hello" with a timeout of 1000 milliseconds
     When the stream emits "So I said hi to her"
-    Then within 1500 milliseconds the callback for "hello" fires with the error:
+    Then within 1500 milliseconds the promise for "hello" rejects with the error:
       """
       Expected 'So I said hi to her' to include string 'hello'
       """
@@ -67,25 +53,23 @@ Feature: Recognizing text in streams
   Scenario: Multiple sequential searches
     When I tell it to wait for "one"
     And the stream emits "one"
-    Then the callback for "one" fires
+    Then the promise for "one" resolves
     When I tell it to wait for "two"
     And the stream emits "two"
-    Then the callback for "two" fires
-    And the callback for "one" does not fire again
+    Then the promise for "two" resolves
 
 
   Scenario: Multiple concurrent searches
     Given I tell it to wait for "one"
     And I tell it to wait for "two"
     When the stream emits "one"
-    Then the callback for "one" fires
-    And the callback for "two" does not fire
+    Then the promise for "one" resolves
+    And the promise for "two" does not resolve
     When the stream emits "two"
-    Then the callback for "two" fires
-    And the callback for "one" does not fire again
+    Then the promise for "two" resolves
 
 
   Scenario: search for a regular expression
     Given I tell it to wait for the regular expression "online at port \d+"
     When the stream emits "online at port 3000"
-    Then the callback for "online at port \d+" fires
+    Then the promise for "online at port \d+" resolves

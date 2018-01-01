@@ -17,7 +17,10 @@ ignoreErrors:
   shouldBeDependency: []
   shouldBeDevDependency: []
   unused:
-    - livescript
+    - '@babel/core'
+    - babel-preset-flow
+    - babel-eslint  # for standard
+    - eslint-plugin-flowtype
 
 requiredModules:
   files:
@@ -26,8 +29,10 @@ requiredModules:
       - '**/*{.,_,-}{spec,test}.ls'
     ignore:
       - 'node_modules/**/*'
-    root: '**/*.ls'
+    root: '**/*.js'
   stripLoaders: false
   transpilers:
-    - extension: .ls
-      module: livescript
+    - extension: .js
+      fnName: transform
+      module: babel-core
+      resultKey: code
