@@ -10,7 +10,6 @@
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
     "@babel/core": "7.0.0-beta.36",
-    "@babel/plugin-transform-flow-comments": "7.0.0-beta.36",
     "babel-cli": "6.26.0",
     "babel-eslint": "7.2.1",
     "babel-preset-flow": "6.23.0",

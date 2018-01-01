@@ -61,16 +61,6 @@
     "@babel/traverse" "7.0.0-beta.36"
     "@babel/types" "7.0.0-beta.36"
 
-"@babel/plugin-syntax-flow@7.0.0-beta.36":
-  version "7.0.0-beta.36"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.0.0-beta.36.tgz#6a508f683547193560b4eade7b93bdd033188dfc"
-
-"@babel/plugin-transform-flow-comments@7.0.0-beta.36":
-  version "7.0.0-beta.36"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-flow-comments/-/plugin-transform-flow-comments-7.0.0-beta.36.tgz#a57c4bf99107ac4e5eeee568ea6bce76072ad904"
-  dependencies:
-    "@babel/plugin-syntax-flow" "7.0.0-beta.36"
-
 "@babel/template@7.0.0-beta.36":
   version "7.0.0-beta.36"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.36.tgz#02e903de5d68bd7899bce3c5b5447e59529abb00"
