@@ -18,6 +18,7 @@ ignoreErrors:
   shouldBeDevDependency: []
   unused:
     - '@babel/core'
+    - '@babel/plugin-transform-flow-comments'
     - babel-preset-flow
     - babel-eslint  # for standard
     - eslint-plugin-flowtype
