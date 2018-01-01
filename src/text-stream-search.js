@@ -1,7 +1,7 @@
 // @flow
 
-const RegexSearch = require('./regex-search')
-const StringSearch = require('./string-search')
+const RegexSearch = require('./searchers/regex-search')
+const StringSearch = require('./searchers/string-search')
 const TextStreamAccumulator = require('text-stream-accumulator')
 const debug = require('debug')('text-stream-search')
 
