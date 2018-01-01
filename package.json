@@ -21,7 +21,8 @@
     "flow-bin": "0.62.0",
     "memory-streams": "0.1.2",
     "o-tools": "0.9.0",
-    "standard": "10.0.3"
+    "standard": "10.0.3",
+    "text-runner": "0.1.27"
   },
   "engines": {
     "npm": ">= 3.0.0"
