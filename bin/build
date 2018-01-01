@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-set -ex
+set -e
 
 # Builds the code base
 rm -rf dist
 node_modules/.bin/babel src -d dist -q
-
-# copy flow files
-cd src
-find . -type f -name '*.js' |
-  grep -v 'typedefs' |
-  sed 's/^\.\///' |
-  xargs -L 1 -I 'XXX' cp ../src/XXX ../dist/XXX.flow
-cd ..
+node_modules/o-tools/bin/copy-flow-files
