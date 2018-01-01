@@ -16,7 +16,7 @@ class BaseSearch implements Search {
     this.accumulator = args.accumulator
     this.resolve = args.resolve
     this.reject = args.reject
-    if (args.timeout) setTimeout(this._onTimeout.bind(this), args.timeout)
+    if (args.timeout != null) setTimeout(this._onTimeout.bind(this), args.timeout)
   }
 
   // checks for matches

@@ -1,4 +1,3 @@
 {
-  "presets": ["flow"],
-  "plugins": ["@babel/plugin-transform-flow-comments"]
+  "presets": ["flow"]
 }
