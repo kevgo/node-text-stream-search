@@ -10,7 +10,8 @@
 </a>
 
 
-Super simple and robust way to reliably recognize text in text streams.
+Simple and robust way to scan text streams for text.
+This works with anything that emits `data` events with Buffers or strings.
 
 
 ```javascript
@@ -23,7 +24,7 @@ await streamSearch.waitForRegex('listening at port \d+')
 
 ```
 
-More details about the wait command is [here](features/wait.feature).
+More use cases are described [here](features/wait.feature).
 
 
 ## Related Projects
