@@ -11,7 +11,8 @@
 
 
 Simple and robust way to scan text streams for text.
-This works with anything that emits `data` events with Buffers or strings.
+This works with anything that emits `data` events with text
+in the form of Buffers or strings.
 
 
 ```javascript
