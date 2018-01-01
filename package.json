@@ -4,18 +4,23 @@
   "author": "Kevin Goslar",
   "dependencies": {
     "debug": "3.1.0",
+    "delay": "2.0.0",
     "text-stream-accumulator": "1.0.0"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
+    "@babel/core": "7.0.0-beta.36",
+    "babel-cli": "6.26.0",
+    "babel-eslint": "7.2.1",
+    "babel-preset-flow": "6.23.0",
     "chai": "4.1.2",
     "cucumber": "3.2.0",
     "dependency-lint": "5.0.1",
-    "livescript": "1.5.0",
+    "eslint-plugin-flowtype": "2.40.1",
+    "flow-bin": "0.62.0",
     "memory-streams": "0.1.2",
     "o-tools": "0.8.47",
-    "o-tools-livescript": "1.2.3",
-    "wait": "0.1.0"
+    "standard": "10.0.3"
   },
   "engines": {
     "npm": ">= 3.0.0"
@@ -32,7 +37,12 @@
     "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
   },
   "scripts": {
-    "prepublish": "node_modules/.bin/build",
     "test": "bin/spec"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
   }
 }
