@@ -20,6 +20,4 @@ if [ $errors -gt 0 ]; then
   exit 1
 fi
 
-
-
 dependency-lint
