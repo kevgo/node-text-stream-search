@@ -21,6 +21,7 @@ ignoreErrors:
     - '@babel/plugin-transform-flow-comments'
     - babel-preset-flow
     - babel-eslint  # for standard
+    - flow-typed
     - eslint-plugin-flowtype
 
 requiredModules:
