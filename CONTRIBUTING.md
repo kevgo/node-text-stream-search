@@ -3,8 +3,8 @@
 
 ## Setup
 
-* `yarn install`
 * add `./bin/` to your PATH
+* run `bin/setup`
 
 
 ## Run tests
