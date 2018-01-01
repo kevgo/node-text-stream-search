@@ -1,5 +1,8 @@
 // @flow
 
+import type {RejectFunction} from '../typedefs/reject-function.js'
+import type {ResolveFunction} from '../typedefs/resolve-function.js'
+import type {Search} from '../typedefs/search.js'
 import type TextStreamAccumulator from 'text-stream-accumulator'
 
 const BaseSearch = require('./base-search')
