@@ -14,20 +14,15 @@ Super simple and robust way to reliably recognize text in text streams.
 
 ```javascript
 
-streamSearch = require('text-stream-search');
+import StreamSearch from 'text-stream-search'
 
-new TextStreamSearch(myStream).wait('hello', function() { console.log('found hello') });
+const streamSearch = new TextStreamSearch(myStream)
+await streamSearch.waitForText('hello')
+await streamSearch.waitForRegex('listening at port \d+')
 
-// Now if the given stream emits someting including the word "hello",
-// the callback above is called exactly once.
 ```
 
 More details about the wait command is [here](features/wait.feature).
-
-TextStreamSearch uses the [debug](https://github.com/visionmedia/debug)
-library.
-To see the parsed text, run your code that uses TextStreamSearch
-with the environment variable `DEBUG` set to `text-stream-search` or `*`.
 
 
 ## Related Projects
