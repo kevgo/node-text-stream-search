@@ -20,7 +20,6 @@
     "flow-bin": "0.62.0",
     "memory-streams": "0.1.2",
     "o-tools": "0.8.47",
-    "o-tools-livescript": "1.2.3",
     "standard": "10.0.3"
   },
   "engines": {
@@ -38,7 +37,6 @@
     "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
   },
   "scripts": {
-    "prepublish": "node_modules/.bin/build",
     "test": "bin/spec"
   },
   "standard": {

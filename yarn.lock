@@ -1811,14 +1811,6 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-livescript@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/livescript/-/livescript-1.5.0.tgz#4fe7121c41217e4608e334eb9cbe1762e63e5566"
-  dependencies:
-    optionator "~0.8.1"
-    prelude-ls "~1.1.2"
-    source-map "^0.5.6"
-
 load-json-file@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"
@@ -1997,12 +1989,6 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-o-tools-livescript@1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/o-tools-livescript/-/o-tools-livescript-1.2.3.tgz#adabb0ac8604c4419a3127e9b2d0a98057e2f1fa"
-  dependencies:
-    livescript "1.5.0"
-
 o-tools@0.8.47:
   version "0.8.47"
   resolved "https://registry.yarnpkg.com/o-tools/-/o-tools-0.8.47.tgz#2132a311f57fc0e9f6448b60b2d4c9ee89929705"
@@ -2072,7 +2058,7 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-optionator@^0.8.2, optionator@~0.8.1:
+optionator@^0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/optionator/-/optionator-0.8.2.tgz#364c5e409d3f4d6301d6c0b4c05bba50180aeb64"
   dependencies:
