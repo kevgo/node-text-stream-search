@@ -1,30 +1,23 @@
 // @flow
 
-const BaseSearch  = require( './base-search')
-const debug = require('debug')('text-stream-search:string-search')
-
-import type {Search} from './search.js'
 import type TextStreamAccumulator from 'text-stream-accumulator'
-import type ResolveFunction from './resolve-function.js'
-import type RejectFunction from './reject-function.js'
 
+const BaseSearch = require('./base-search')
+const debug = require('debug')('text-stream-search:string-search')
 
 // Calls the given handler exactly one time
 // when text matches the given string
 class StringSearch extends BaseSearch implements Search {
-
   searchText: string
-  constructor(args: {query: string, accumulator: TextStreamAccumulator, resolve: ResolveFunction, reject: RejectFunction, timeout?: number}) {
+  constructor (args: {query: string, accumulator: TextStreamAccumulator, resolve: ResolveFunction, reject: RejectFunction, timeout?: number}) {
     super(args)
     this.searchText = args.query
   }
 
-
   // Returns the display name for debug / error messages
-  getDisplayName(): string {
+  getDisplayName (): string {
     return `string '${this.searchText}'`
   }
-
 
   // Returns whether the given text contains the search text this search is looking for
   matches (text: string): boolean {
@@ -37,6 +30,5 @@ class StringSearch extends BaseSearch implements Search {
     return result
   }
 }
-
 
 module.exports = StringSearch

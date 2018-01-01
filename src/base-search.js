@@ -1,11 +1,9 @@
 // @flow
+
+import type TextStreamAccumulator from 'text-stream-accumulator'
+
 const debug = require('debug')('text-stream-search')
 const delay = require('delay')
-import type TextStreamAccumulator from 'text-stream-accumulator'
-import type {Search} from './search.js'
-
-import type ResolveFunction from './resolve-function.js'
-import type RejectFunction from './reject-function.js'
 
 // calls the given handler exactly one time
 // when text matches the given string
@@ -14,27 +12,26 @@ class BaseSearch implements Search {
   resolve: ResolveFunction
   reject: RejectFunction
 
-  constructor(args: {accumulator: TextStreamAccumulator, resolve: ResolveFunction, reject: RejectFunction, timeout?: number}) {
+  constructor (args: {accumulator: TextStreamAccumulator, resolve: ResolveFunction, reject: RejectFunction, timeout?: number}) {
     this.accumulator = args.accumulator
     this.resolve = args.resolve
     this.reject = args.reject
     if (args.timeout) setTimeout(this._onTimeout.bind(this), args.timeout)
   }
 
-
   // checks for matches
   //
   // Disables after the first match,
   // subsequent calls are ignored
   async check (text: string) {
-    if (this.matches(text))  await this._foundMatch(text)
+    if (this.matches(text)) await this._foundMatch(text)
   }
 
-  getDisplayName(): string {
+  getDisplayName (): string {
     throw new Error('implement in subclass')
   }
 
-  matches(text: string): boolean {
+  matches (text: string): boolean {
     throw new Error('implement in subclass')
   }
 
@@ -45,9 +42,8 @@ class BaseSearch implements Search {
     this.resolve()
   }
 
-
   // called after a given timeout
-  _onTimeout() {
+  _onTimeout () {
     const errorMessage = `Expected '${this.accumulator.toString()}' to include ${this.getDisplayName()}`
     debug(`Timeout: rejecting with error message '${errorMessage}'`)
     this.reject(new Error(errorMessage))

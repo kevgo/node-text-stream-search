@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-node_modules/.bin/flow
 bin/build
 
 if [ "$#" == "0" ]; then
   node_modules/cucumber/bin/cucumber.js
-  node_modules/o-tools/bin/lint
+  bin/lint
 else
   env DEBUG='*,-babel' node_modules/cucumber/bin/cucumber.js "$@"
 fi

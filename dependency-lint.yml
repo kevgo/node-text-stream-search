@@ -19,6 +19,8 @@ ignoreErrors:
   unused:
     - '@babel/core'
     - babel-preset-flow
+    - babel-eslint  # for standard
+    - eslint-plugin-flowtype
 
 requiredModules:
   files:
