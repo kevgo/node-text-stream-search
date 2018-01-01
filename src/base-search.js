@@ -1,21 +1,24 @@
 // @flow
 const debug = require('debug')('text-stream-search')
+const delay = require('delay')
 import type TextStreamAccumulator from 'text-stream-accumulator'
 import type {Search} from './search.js'
 
+import type ResolveFunction from './resolve-function.js'
+import type RejectFunction from './reject-function.js'
 
 // calls the given handler exactly one time
 // when text matches the given string
 class BaseSearch implements Search {
   accumulator: TextStreamAccumulator
-  handler: (?Error) => void
-  called: boolean
+  resolve: ResolveFunction
+  reject: RejectFunction
 
-  constructor(args: {accumulator: TextStreamAccumulator, handler: (?Error) => void, timeout?: number}) {
+  constructor(args: {accumulator: TextStreamAccumulator, resolve: ResolveFunction, reject: RejectFunction, timeout?: number}) {
     this.accumulator = args.accumulator
-    this.handler = args.handler
-    this.called = false
-    if (args.timeout) setTimeout(this._onTimeout, args.timeout)
+    this.resolve = args.resolve
+    this.reject = args.reject
+    if (args.timeout) setTimeout(this._onTimeout.bind(this), args.timeout)
   }
 
 
@@ -23,9 +26,8 @@ class BaseSearch implements Search {
   //
   // Disables after the first match,
   // subsequent calls are ignored
-  check (text: string) {
-    if (this.called) return
-    if (this.matches(text))  this._foundMatch(text)
+  async check (text: string) {
+    if (this.matches(text))  await this._foundMatch(text)
   }
 
   getDisplayName(): string {
@@ -37,19 +39,18 @@ class BaseSearch implements Search {
   }
 
   // called when a match is found
-  _foundMatch (text: string) {
-    debug `found match for ${this.getDisplayName()}`
-    this.called = true
-    process.nextTick(this.handler)
+  async _foundMatch (text: string) {
+    debug(`found match for ${this.getDisplayName()}`)
+    await delay(1)
+    this.resolve()
   }
 
 
   // called after a given timeout
   _onTimeout() {
-    if (this.called) return
-    process.nextTick(() => {
-      this.handler(new Error(`Expected '${this.accumulator.toString()}' to include ${this.getDisplayName()}`))
-    })
+    const errorMessage = `Expected '${this.accumulator.toString()}' to include ${this.getDisplayName()}`
+    debug(`Timeout: rejecting with error message '${errorMessage}'`)
+    this.reject(new Error(errorMessage))
   }
 }
 

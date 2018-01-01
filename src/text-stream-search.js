@@ -13,7 +13,7 @@ class TextStreamSearch {
   _searches: Array<Search>
 
   constructor (stream: stream$Readable) {
-    stream.on('data', this._onStreamData)
+    stream.on('data', this._onStreamData.bind(this))
 
     this._searches = []
 
@@ -33,27 +33,33 @@ class TextStreamSearch {
   }
 
 
-  // Calls the given handler when the given text shows up in the output
-  waitForText (query: string, handler: (?Error) => void, timeout?: number) {
-    debug(`adding text search for: ${query}`)
-    const search = new StringSearch({ accumulator: this._accumulator,
-                                      handler,
-                                      query,
-                                      timeout})
-    this._searches.push(search)
-    this._checkSearches()
+  // Returns a promise that resolves when the given text shows up in the observed stream
+  async waitForText (query: string, timeout?: number): Promise<void> {
+    debug(`adding subscription for '${query}'`)
+    return new Promise(async (resolve, reject) => {
+      const search = new StringSearch({ accumulator: this._accumulator,
+                                        query,
+                                        resolve,
+                                        reject,
+                                        timeout})
+      this._searches.push(search)
+      await this._checkSearches()
+    })
   }
 
 
   // Calls the given handler when the given text shows up in the output
-  waitForRegex (query: RegExp, handler: (?Error) => void, timeout?: number) {
+  waitForRegex (query: RegExp, timeout?: number): Promise<void> {
     debug(`adding text search for: ${query.toString()}`)
-    const search = new RegexSearch({ accumulator: this._accumulator,
-                                     handler,
-                                     regex: query,
-                                     timeout })
-    this._searches.push(search)
-    this._checkSearches()
+    return new Promise((resolve, reject) => {
+      const search = new RegexSearch({ accumulator: this._accumulator,
+                                       resolve,
+                                       reject,
+                                       regex: query,
+                                       timeout })
+      this._searches.push(search)
+      this._checkSearches()
+    })
   }
 
 
@@ -71,10 +77,11 @@ class TextStreamSearch {
 
   // Looks for new matches in the received text.
   // Called each time the text or search terms change.
-  _checkSearches() {
+  async _checkSearches() {
+    debug(`checking ${this._searches.length} subscriptions`)
     const text = this.fullText()
     for (let search of this._searches) {
-      search.check(text)
+      await search.check(text)
     }
   }
 }

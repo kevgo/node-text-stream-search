@@ -10,5 +10,5 @@ Feature: accessing the full output received so far
   Scenario: the instance has received some text already
     Given a TextStreamSearch instance
     And the stream emits "hello world"
-    When calling 'fullText()' on that instance
+    When calling the "fullText" method on that instance
     Then it returns "hello world"

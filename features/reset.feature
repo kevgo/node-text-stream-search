@@ -10,5 +10,5 @@ Feature: Resetting text stream accumulator
 
   Scenario: clear accumulated text stream
     Given a TextStreamSearch instance with accumulated text
-    When calling the "reset" method
+    When calling the "reset" method on that instance
     Then its accumulated text is empty

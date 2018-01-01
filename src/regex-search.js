@@ -5,12 +5,15 @@ import type {Search} from './search.js'
 import type TextStreamAccumulator from 'text-stream-accumulator'
 
 
+import type ResolveFunction from './resolve-function.js'
+import type RejectFunction from './reject-function.js'
+
 // calls the given handler exactly one time
 // then text matches the given regex
 class RegexSearch extends BaseSearch implements Search {
 
   searchRegexp: RegExp
-  constructor (args: {regex: RegExp, accumulator: TextStreamAccumulator, handler: (?Error) => void, timeout?: number}) {
+  constructor (args: {regex: RegExp, accumulator: TextStreamAccumulator, resolve: ResolveFunction, reject: RejectFunction, timeout?: number}) {
     super(args)
     this.searchRegexp = args.regex
   }

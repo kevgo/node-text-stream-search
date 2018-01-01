@@ -1,3 +1,3 @@
 module.exports = {
-  "default": "--compiler ls:livescript -r features"
+  'default': '--compiler js:babel-core/register -r features --fail-fast'
 }

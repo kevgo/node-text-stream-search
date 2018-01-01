@@ -3,5 +3,5 @@
 export interface Search {
   getDisplayName(): string,
   matches(string): boolean,
-  check(string): void
+  check(string): Promise<void>
 }
