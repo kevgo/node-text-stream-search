@@ -1,4 +1,11 @@
-bin/
+circle.yml
+CONTRIBUTING.md
 cucumber.js
+dependency-lint.yml
+tertestrial.yml
+text-run.yml
+
+bin/
 features/
 src/
+tmp/
