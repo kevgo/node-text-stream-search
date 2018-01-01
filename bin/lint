@@ -21,5 +21,3 @@ if [ $errors -gt 0 ]; then
 fi
 
 dependency-lint
-
-text-run
