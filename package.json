@@ -5,7 +5,7 @@
   "dependencies": {
     "debug": "3.1.0",
     "delay": "2.0.0",
-    "text-stream-accumulator": "1.1.0"
+    "text-stream-accumulator": "1.2.0"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {

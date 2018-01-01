@@ -3989,9 +3989,9 @@ text-stream-accumulator@0.3.3:
   dependencies:
     debug "2.6.0"
 
-text-stream-accumulator@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/text-stream-accumulator/-/text-stream-accumulator-1.1.0.tgz#23cf1ed6337f9a0e1c742ef2ee159b56ba524322"
+text-stream-accumulator@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/text-stream-accumulator/-/text-stream-accumulator-1.2.0.tgz#cd8bb4ae25eaac6bf8ece44678a14da6ee924d14"
   dependencies:
     debug "3.1.0"
 
