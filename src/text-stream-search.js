@@ -1,5 +1,7 @@
 // @flow
 
+import type {Search} from './typedefs/search.js'
+
 const RegexSearch = require('./searchers/regex-search')
 const StringSearch = require('./searchers/string-search')
 const TextStreamAccumulator = require('text-stream-accumulator')
