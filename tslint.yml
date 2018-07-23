@@ -1,0 +1,9 @@
+extends: "tslint:latest"
+rules:
+  interface-name: [false]
+  member-access: [true, "no-public"]
+  semicolon: [true, "never"]
+  quotemark: [true, "double"]
+  no-implicit-dependencies: [true, "dev"]
+  no-unused-variable: false
+  trailing-comma: [false]

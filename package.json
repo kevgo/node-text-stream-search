@@ -5,24 +5,20 @@
   "dependencies": {
     "debug": "3.1.0",
     "delay": "2.0.0",
-    "text-stream-accumulator": "1.2.0"
+    "text-stream-accumulator": "1.2.4"
   },
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
-    "@babel/core": "7.0.0-beta.36",
-    "babel-cli": "6.26.0",
-    "babel-eslint": "7.2.1",
-    "babel-preset-flow": "6.23.0",
+    "@types/debug": "0.0.30",
+    "@types/delay": "2.0.1",
     "chai": "4.1.2",
     "cucumber": "3.2.0",
-    "dependency-lint": "5.0.1",
-    "eslint-plugin-flowtype": "2.40.1",
-    "flow-bin": "0.62.0",
-    "flow-typed": "2.2.3",
     "memory-streams": "0.1.2",
     "o-tools": "0.10.1",
     "standard": "10.0.3",
-    "text-runner": "0.1.27"
+    "text-runner": "0.1.27",
+    "tslint": "5.11.0",
+    "typescript": "2.9.2"
   },
   "engines": {
     "npm": ">= 3.0.0"
