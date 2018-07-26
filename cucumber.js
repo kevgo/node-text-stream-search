@@ -1,3 +1,4 @@
 module.exports = {
-  'default': '--compiler js:babel-core/register -r features --fail-fast'
+  default:
+    "--require-module ts-node/register --require 'features/**/*.ts' --fail-fast"
 }

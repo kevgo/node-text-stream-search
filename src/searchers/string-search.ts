@@ -1,10 +1,10 @@
-import deb from 'debug'
-import TextStreamAccumulator from 'text-stream-accumulator'
-import { RejectFunction } from '../types/reject-function.js'
-import { ResolveFunction } from '../types/resolve-function.js'
-import Search from '../types/search.js'
-import BaseSearch from './base-search'
-const debug = deb('text-stream-search:string-search')
+import deb from "debug"
+import TextStreamAccumulator from "text-stream-accumulator"
+import { RejectFunction } from "../types/reject-function.js"
+import { ResolveFunction } from "../types/resolve-function.js"
+import Search from "../types/search.js"
+import BaseSearch from "./base-search"
+const debug = deb("text-stream-search:string-search")
 
 // Calls the given handler exactly one time
 // when text matches the given string

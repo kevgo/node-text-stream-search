@@ -1,8 +1,8 @@
-import TextStreamAccumulator from 'text-stream-accumulator'
-import { RejectFunction } from '../types/reject-function.js'
-import { ResolveFunction } from '../types/resolve-function.js'
-import Search from '../types/search.js'
-import BaseSearch from './base-search'
+import TextStreamAccumulator from "text-stream-accumulator"
+import { RejectFunction } from "../types/reject-function.js"
+import { ResolveFunction } from "../types/resolve-function.js"
+import Search from "../types/search.js"
+import BaseSearch from "./base-search"
 
 // calls the given handler exactly one time
 // then text matches the given regex
@@ -13,7 +13,7 @@ export default class RegexSearch extends BaseSearch implements Search {
     accumulator: TextStreamAccumulator,
     resolve: ResolveFunction,
     reject: RejectFunction,
-    timeout?: number,
+    timeout?: number
   ) {
     super(accumulator, resolve, reject, timeout)
     this.searchRegexp = regex
