@@ -6,6 +6,7 @@ import Search from "./types/search.js"
 const debug = deb("text-stream-search")
 
 export default class TextStreamSearch {
+
   // the output captured so far
   private accumulator: TextStreamAccumulator
   private searches: Search[]
@@ -77,5 +78,3 @@ export default class TextStreamSearch {
     }
   }
 }
-
-module.exports = TextStreamSearch
