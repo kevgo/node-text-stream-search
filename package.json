@@ -10,10 +10,12 @@
   "description": "Searches for occurrences of a given search term in Node.js text streams",
   "devDependencies": {
     "@types/chai": "4.1.4",
+    "@types/chalk": "^2.2.0",
     "@types/cucumber": "4.0.4",
     "@types/debug": "0.0.30",
     "@types/delay": "3.1.0",
     "chai": "4.1.2",
+    "chalk": "^2.4.1",
     "cucumber": "4.2.1",
     "es6-promise-inspect": "^1.0.4",
     "memory-streams": "0.1.3",
