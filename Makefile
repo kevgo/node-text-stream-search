@@ -43,4 +43,4 @@ setup:   # sets up the installation on this machine
 spec: lint cuke docs   # runs all tests
 
 upgrade:   # updates the dependencies to their latest versions
-	yarn upgrade-interactive
+	yarn upgrade --latest
