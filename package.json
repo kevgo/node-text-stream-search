@@ -1,6 +1,6 @@
 {
   "name": "text-stream-search",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Kevin Goslar",
   "dependencies": {
     "debug": "3.1.0",
