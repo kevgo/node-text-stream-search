@@ -24,6 +24,7 @@ docs: build   # runs the documentation tests
 fix:
 	tslint --project tsconfig.json --fix
 	prettier --write src/*.ts
+	prettier --write **/*.md
 
 help:   # prints all make targets
 	@cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
@@ -31,6 +32,7 @@ help:   # prints all make targets
 lint:   # lints all files
 	node_modules/.bin/tsc --noEmit
 	node_modules/.bin/prettier -l "src/**/*.ts"
+	node_modules/.bin/prettier -l "**/*.md"
 
 setup:   # sets up the installation on this machine
 	node_modules/o-tools/bin/check-paths
