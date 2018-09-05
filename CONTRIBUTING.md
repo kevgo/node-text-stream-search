@@ -1,24 +1,20 @@
 # Text Stream Search Developer Guidelines
 
-
 ## Setup
 
-* add `./bin/` to your PATH
-* run `bin/setup`
-
+- add `./bin/` to your PATH
+- run `bin/setup`
 
 ## Run tests
 
-* run all tests: `$ spec`
-* run linters: `$ lint`
-
+- run all tests: `$ spec`
+- run linters: `$ lint`
 
 ## Update dependencies
 
 ```
 $ update
 ```
-
 
 ## Deploy a new version
 
