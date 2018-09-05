@@ -3,8 +3,8 @@ rules:
   arrow-parens: [true, "ban-single-arg-parens"]
   interface-name: [false]
   member-access: [true, "no-public"]
-  semicolon: [true, "never"]
-  quotemark: [true, "double"]
   no-implicit-dependencies: [true, "dev"]
   no-unused-variable: false
+  quotemark: [true, "double"]
+  semicolon: [true, "never"]
   trailing-comma: [false]
