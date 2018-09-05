@@ -1,8 +1,10 @@
 .DEFAULT_GOAL := spec
 
 build: clean    # builds for the current platform
-	@rm -rf dist
 	@node_modules/.bin/tsc -p .
+
+build-win: clean
+	@node_modules\.bin\tsc -p .
 
 clean:   # removes all build artifacts
 	@rm -rf dist
@@ -10,7 +12,7 @@ clean:   # removes all build artifacts
 cuke: build   # runs the feature specs
 	@node_modules/.bin/cucumber-js
 
-cuke-win:     # runs the feature specs on Windows
+cuke-win: build-win     # runs the feature specs on Windows
 	@node_modules\.bin\cucumber-js --tags '(not @todo) and (not @skipWindows)' --format progress
 
 deploy: build  # deploys a new version to npmjs.org
@@ -27,8 +29,8 @@ help:   # prints all make targets
 	@cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
 
 lint:   # lints all files
-	node_modules/.bin/tsc --noEmit
-	node_modules/.bin/prettier -l 'src/*.ts'
+	tsc --noEmit
+	prettier -l "src/**/*.ts"
 
 setup:   # sets up the installation on this machine
 	node_modules/o-tools/bin/check-paths
