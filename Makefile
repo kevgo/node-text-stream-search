@@ -29,7 +29,7 @@ help:   # prints all make targets
 	@cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
 
 lint:   # lints all files
-	tsc --noEmit
+	node_modules/.bin/tsc --noEmit
 	prettier -l "src/**/*.ts"
 
 setup:   # sets up the installation on this machine
