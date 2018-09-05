@@ -1,7 +1,7 @@
-import { defineSupportCode } from "cucumber"
+import { setWorldConstructor } from "cucumber"
 import vm from "vm"
 console.log(vm)
-const debug = vm.runInThisContext({})
+const debug = vm.runInThisContext("")
 
 function CustomWorld() {
   // holds the currently running search promises
@@ -30,6 +30,4 @@ function CustomWorld() {
   }
 }
 
-defineSupportCode(({ setWorldConstructor }) => {
-  setWorldConstructor(CustomWorld)
-})
+setWorldConstructor(CustomWorld)
