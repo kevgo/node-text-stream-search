@@ -29,7 +29,7 @@
   },
   "files": [
     "dist",
-    "npm-shrinkwrap.json"
+    "yarn.lock"
   ],
   "homepage": "https://github.com/Originate/node-text-stream-search#readme",
   "license": "ISC",
