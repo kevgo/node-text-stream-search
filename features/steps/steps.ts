@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-expression */
 
 import { expect } from "chai"
+import inspect from "es6-promise-inspect"
 import { Given, Then, When } from "cucumber"
 import delay from "delay"
 import { ReadableStream } from "memory-streams"
@@ -63,7 +64,7 @@ Then(/^the promise for "([^"]*)" resolves$/, { timeout: 10 }, async function(
 
 Then(/^the promise for "([^"]*)" does not resolve/, async function(searchTerm) {
   await delay(10)
-  expect(this.promiseInfo(this.promises[searchTerm]).status).to.equal("pending")
+  expect(inspect.getStatus(this.promises[searchTerm])).to.equal("pending")
 })
 
 Then(
@@ -86,7 +87,7 @@ Then(
   /^within (\d+) milliseconds the callback for "([^"]*)" has not fired again$/,
   async function(pause, searchTerm) {
     await delay(parseInt(pause, 10))
-    const promiseInfo = this.promiseInfo(this.promises[searchTerm])
-    expect(promiseInfo.status).to.equal("pending")
+    const promiseInfo = inspect.getStatus(this.promises[searchTerm])
+    expect(promiseInfo).to.equal("pending")
   }
 )

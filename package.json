@@ -15,6 +15,7 @@
     "@types/delay": "2.0.1",
     "chai": "4.1.2",
     "cucumber": "4.2.1",
+    "es6-promise-inspect": "^1.0.4",
     "memory-streams": "0.1.2",
     "o-tools": "0.10.1",
     "standard": "10.0.3",

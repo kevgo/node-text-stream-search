@@ -1,6 +1,5 @@
 import { setWorldConstructor } from "cucumber"
 import vm from "vm"
-console.log(vm)
 const debug = vm.runInDebugContext("Debug")
 
 function CustomWorld() {
