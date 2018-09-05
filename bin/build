@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-# Builds the code base
-rm -rf dist
-node_modules/.bin/babel src -d dist -q
-node_modules/o-tools/bin/copy-flow-files
