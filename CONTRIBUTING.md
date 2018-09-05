@@ -3,18 +3,18 @@
 ## Setup
 
 - add `./bin/` to your PATH
-- run `bin/setup`
+- run <code textrun="verify-make-command">make setup</code>
 
 ## Run tests
 
-- run all tests: `$ spec`
-- run linters: `$ lint`
+- run all tests: <code textrun="verify-make-command">make spec</code>
+- run linters: <code textrun="verify-make-command">make lint</code>
 
 ## Update dependencies
 
-```
-$ update
-```
+<pre textrun="verify-make-command">
+make upgrade
+</pre>
 
 ## Deploy a new version
 
