@@ -1,5 +1,6 @@
 .DEFAULT_GOAL := spec
 
+# platform-specificity
 ifdef ComSpec
 	/ := $(strip \)
 else
