@@ -31,8 +31,8 @@ help:   # prints all make targets
 	@cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
 
 lint:   # lints all files
-	tsc --noEmit
-	prettier -l "src/**/*.ts"
+	node_modules/.bin/tsc --noEmit
+	node_modules/.bin/prettier -l "src/**/*.ts"
 
 spec: lint cuke docs   # runs all tests
 
