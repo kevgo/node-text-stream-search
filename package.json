@@ -19,7 +19,6 @@
     "memory-streams": "0.1.2",
     "o-tools": "0.10.1",
     "prettier": "^1.14.2",
-    "standard": "10.0.3",
     "text-runner": "0.1.27",
     "ts-node": "7.0.0",
     "tslint": "5.11.0",
