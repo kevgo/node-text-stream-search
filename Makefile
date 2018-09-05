@@ -32,12 +32,12 @@ help:   # prints all make targets
 	@cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
 
 lint:   # lints all files
-	node_modules/.bin/tsc --noEmit
+	node_modules$/.bin$/tsc --noEmit
 	node_modules/.bin/prettier -l "src/**/*.ts"
 	node_modules/.bin/prettier -l "**/*.md"
 
 setup:   # sets up the installation on this machine
-	node_modules/o-tools/bin/check-paths
+	node_modules$/o-tools$/bin$/check-paths
 	yarn install
 
 spec: lint cuke docs   # runs all tests
