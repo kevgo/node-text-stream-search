@@ -1,25 +1,27 @@
 .DEFAULT_GOAL := spec
 
-build: clean    # builds for the current platform
-	@node_modules/.bin/tsc -p .
+# platform-specificity
+ifdef ComSpec
+	/ := $(strip \)
+else
+	/ := /
+endif
 
-build-win: clean
-	@node_modules\.bin\tsc -p .
+
+build: clean    # builds for the current platform
+	@node_modules$/.bin$/tsc -p .
 
 clean:   # removes all build artifacts
 	@rm -rf dist
 
 cuke: build   # runs the feature specs
-	@node_modules/.bin/cucumber-js
-
-cuke-win: build-win     # runs the feature specs on Windows
-	@node_modules\.bin\cucumber-js --tags '(not @todo) and (not @skipWindows)' --format progress
+	@node_modules$/.bin$/cucumber-js
 
 deploy: build  # deploys a new version to npmjs.org
 	npm publish
 
 docs: build   # runs the documentation tests
-	@node_modules/.bin/text-run --offline
+	@node_modules$/.bin$/text-run --offline
 
 fix:
 	tslint --project tsconfig.json --fix
