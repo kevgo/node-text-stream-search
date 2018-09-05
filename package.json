@@ -38,6 +38,7 @@
     "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
   },
   "scripts": {
+    "prepublishOnly": "make build",
     "test": "make spec"
   },
   "standard": {
