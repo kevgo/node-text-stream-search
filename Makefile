@@ -30,7 +30,7 @@ help:   # prints all make targets
 
 lint:   # lints all files
 	node_modules/.bin/tsc --noEmit
-	prettier -l "src/**/*.ts"
+	node_modules/.bin/prettier -l "src/**/*.ts"
 
 setup:   # sets up the installation on this machine
 	node_modules/o-tools/bin/check-paths
