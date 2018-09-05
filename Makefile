@@ -34,6 +34,10 @@ lint:   # lints all files
 	node_modules/.bin/tsc --noEmit
 	node_modules/.bin/prettier -l "src/**/*.ts"
 
+setup:   # sets up the installation on this machine
+	node_modules/o-tools/bin/check-paths
+	yarn install
+
 spec: lint cuke docs   # runs all tests
 
 upgrade:   # updates the dependencies to their latest versions
