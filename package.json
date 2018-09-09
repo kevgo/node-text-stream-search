@@ -40,11 +40,5 @@
   "scripts": {
     "prepublishOnly": "make build",
     "test": "make spec"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ]
   }
 }
