@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-expression */
 
 import { expect } from "chai"
-import inspect from "es6-promise-inspect"
 import { Given, Then, When } from "cucumber"
 import delay from "delay"
+import inspect from "es6-promise-inspect"
 import { ReadableStream } from "memory-streams"
 import TextStreamSearch from "../.."
 
