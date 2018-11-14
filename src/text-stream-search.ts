@@ -5,7 +5,7 @@ import StringSearch from "./searchers/string-search"
 import Search from "./types/search.js"
 const debug = deb("text-stream-search")
 
-export default class TextStreamSearch {
+class TextStreamSearch {
   // the output captured so far
   private accumulator: TextStreamAccumulator
   private searches: Search[]
@@ -77,3 +77,9 @@ export default class TextStreamSearch {
     }
   }
 }
+
+/* Add compatibility with `import TextStreamSearch from '...'` */
+Object.defineProperty(TextStreamSearch, "__esModule", { value: true })
+Object.defineProperty(TextStreamSearch, "default", { value: TextStreamSearch })
+
+export = TextStreamSearch
