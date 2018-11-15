@@ -3,7 +3,6 @@ rules:
   arrow-parens: [true, "ban-single-arg-parens"]
   interface-name: [false]
   member-access: [true, "no-public"]
-  no-default-export: true
   no-implicit-dependencies: [true, "dev"]
   no-unused-variable: false
   only-arrow-functions: false
