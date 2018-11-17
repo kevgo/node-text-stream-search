@@ -27,6 +27,13 @@ export default class BaseSubscription {
     }
   }
 
+  // checks for matches
+  async check(text: string) {
+    if (this.matches(text)) {
+      await this.foundMatch()
+    }
+  }
+
   getDisplayName(): string {
     throw new Error("implement in subclass")
   }
@@ -36,6 +43,11 @@ export default class BaseSubscription {
     debug(`found match for ${this.getDisplayName()}`)
     await delay(1)
     this.resolve()
+  }
+
+  // returns whether the given text contains the search text this search is looking for
+  matches(_: string): boolean {
+    throw new Error("implement in subclass")
   }
 
   // called after a given timeout

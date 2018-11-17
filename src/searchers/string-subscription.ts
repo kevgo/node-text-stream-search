@@ -23,13 +23,6 @@ export default class StringSubscription extends BaseSubscription
     this.searchText = query
   }
 
-  // checks for matches
-  async check(text: string) {
-    if (this.matches(text)) {
-      await this.foundMatch()
-    }
-  }
-
   // Returns the display name for debug / error messages
   getDisplayName(): string {
     return `string '${this.searchText}'`
