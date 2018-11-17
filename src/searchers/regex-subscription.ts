@@ -1,13 +1,15 @@
 import TextStreamAccumulator from "text-stream-accumulator"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
-import Search from "../types/search.js"
-import BaseSearch from "./base-search"
+import Subscription from "../types/subscription.js"
+import BaseSubscription from "./base-subscription"
 
 // calls the given handler exactly one time
 // then text matches the given regex
-export default class RegexSearch extends BaseSearch implements Search {
+export default class RegexSubscription extends BaseSubscription
+  implements Subscription {
   searchRegexp: RegExp
+
   constructor(
     regex: RegExp,
     accumulator: TextStreamAccumulator,
