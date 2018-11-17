@@ -1,8 +1,8 @@
 import deb from "debug"
 import TextStreamAccumulator, { ReadableStream } from "text-stream-accumulator"
-import { RegexSubscription } from "./searchers/regex-subscription"
-import { StringSubscription } from "./searchers/string-subscription"
-import { Subscription } from "./types/subscription.js"
+import RegexSubscription from "./searchers/regex-subscription"
+import StringSubscription from "./searchers/string-subscription"
+import Subscription from "./types/subscription.js"
 const debug = deb("text-stream-search")
 
 class TextStreamSearch {

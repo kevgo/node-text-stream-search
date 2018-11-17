@@ -8,7 +8,7 @@ import delay from "delay"
 
 // calls the given handler exactly one time
 // when text matches the given string
-export class BaseSubscription {
+export default class BaseSubscription {
   accumulator: TextStreamAccumulator
   resolve: ResolveFunction
   reject: RejectFunction

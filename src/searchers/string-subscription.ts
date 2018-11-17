@@ -2,13 +2,13 @@ import deb from "debug"
 import TextStreamAccumulator from "text-stream-accumulator"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
-import { Subscription } from "../types/subscription.js"
-import { BaseSubscription } from "./base-subscription"
+import Subscription from "../types/subscription.js"
+import BaseSubscription from "./base-subscription"
 const debug = deb("text-stream-search:string-search")
 
 // Calls the given handler exactly one time
 // when text matches the given string
-export class StringSubscription extends BaseSubscription
+export default class StringSubscription extends BaseSubscription
   implements Subscription {
   searchText: string
 
