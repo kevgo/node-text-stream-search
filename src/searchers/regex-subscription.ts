@@ -21,13 +21,6 @@ export class RegexSubscription extends BaseSubscription
     this.searchRegexp = regex
   }
 
-  // checks for matches
-  async check(text: string) {
-    if (this.matches(text)) {
-      await this.foundMatch()
-    }
-  }
-
   // returns the display name for debug / error messages
   getDisplayName(): string {
     return `regex '${this.searchRegexp.toString()}'`
