@@ -33,14 +33,9 @@ class TextStreamSearch {
   async waitForText(text: string, timeout?: number) {
     debug(`adding text subscription: '${text}'`)
     return new Promise(async (resolve, reject) => {
-      const textSubscription = new StringSubscription(
-        text,
-        this.accumulator,
-        resolve,
-        reject,
-        timeout
+      this.subscriptions.push(
+        new StringSubscription(text, this.accumulator, resolve, reject, timeout)
       )
-      this.subscriptions.push(textSubscription)
       await this.checkSubscriptions()
     })
   }
@@ -50,14 +45,9 @@ class TextStreamSearch {
   waitForRegex(regex: RegExp, timeout?: number): Promise<void> {
     debug(`adding regex subscription: ${regex.toString()}`)
     return new Promise((resolve, reject) => {
-      const regexSearch = new RegexSubscription(
-        regex,
-        this.accumulator,
-        resolve,
-        reject,
-        timeout
+      this.subscriptions.push(
+        new RegexSubscription(regex, this.accumulator, resolve, reject, timeout)
       )
-      this.subscriptions.push(regexSearch)
       this.checkSubscriptions()
     })
   }
