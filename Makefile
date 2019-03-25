@@ -23,7 +23,7 @@ deploy: build  # deploys a new version to npmjs.org
 docs: build   # runs the documentation tests
 	@node_modules$/.bin$/text-run --offline --format dot
 
-fix:
+fix:  # fixes the fixable issues in the code base
 	tslint --project tsconfig.json --fix
 	prettier --write src/*.ts
 	prettier --write **/*.md
