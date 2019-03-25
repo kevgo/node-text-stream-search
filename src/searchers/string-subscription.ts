@@ -29,13 +29,13 @@ export default class StringSubscription extends BaseSubscription
   }
 
   // Returns whether the given text contains the search text this search is looking for
-  matches(text: string): boolean {
-    const result = text.includes(this.searchText)
-    if (result) {
+  matches(text: string): string {
+    const found = text.includes(this.searchText)
+    if (found) {
       debug(`search for '${this.searchText}' found a match in '${text}'`)
     } else {
       debug(`no match in '${text}'`)
     }
-    return result
+    return this.searchText
   }
 }

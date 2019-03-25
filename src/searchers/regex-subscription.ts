@@ -27,7 +27,10 @@ export default class RegexSubscription extends BaseSubscription
   }
 
   // returns whether the given text contains the search text this search is looking for
-  matches(text: string): boolean {
-    return this.searchRegexp.test(text)
+  matches(text: string): string {
+    const matches = text.match(this.searchRegexp)
+    if (matches) {
+      return matches
+    }
   }
 }
