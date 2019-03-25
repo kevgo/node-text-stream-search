@@ -53,7 +53,7 @@ class TextStreamSearch {
   }
 
   // Called when new text arrives
-  onStreamData(data: string) {
+  onStreamData(data: Buffer) {
     debug(`receiving from stream: '${data}'`)
 
     // need to wait for the next tick to give the accumulator time to update

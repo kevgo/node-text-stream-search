@@ -3,7 +3,7 @@
 import { expect } from "chai"
 import { Given, Then, When } from "cucumber"
 import delay from "delay"
-import inspect from "es6-promise-inspect"
+import * as inspect from "es6-promise-inspect"
 import { ReadableStream } from "memory-streams"
 import TextStreamSearch from "../.."
 
