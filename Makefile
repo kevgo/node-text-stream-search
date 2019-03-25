@@ -21,7 +21,7 @@ deploy: build  # deploys a new version to npmjs.org
 	npm publish
 
 docs: build   # runs the documentation tests
-	@node_modules$/.bin$/text-run --offline
+	@node_modules$/.bin$/text-run --offline --format dot
 
 fix:
 	tslint --project tsconfig.json --fix
