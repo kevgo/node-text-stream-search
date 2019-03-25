@@ -62,6 +62,16 @@ Then(/^the promise for "([^"]*)" resolves$/, { timeout: 10 }, async function(
   await promise // if the promise doesn't resolve here, the step will timeout in 10 ms
 })
 
+Then(
+  /^the promise for "([^"]*)" resolves with "([^"]*)"$/,
+  { timeout: 10 },
+  async function(searchTerm, expectedResult) {
+    const promise = this.promises[searchTerm]
+    const actualResult = await promise // if the promise doesn't resolve here, the step will timeout in 10 ms
+    expect(actualResult).to.equal(expectedResult)
+  }
+)
+
 Then(/^the promise for "([^"]*)" does not resolve/, async function(searchTerm) {
   await delay(10)
   expect(inspect.getStatus(this.promises[searchTerm])).to.equal("pending")

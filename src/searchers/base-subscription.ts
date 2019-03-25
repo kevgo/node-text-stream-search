@@ -29,8 +29,9 @@ export default class BaseSubscription {
 
   // checks for matches
   async check(text: string) {
-    if (this.matches(text)) {
-      await this.foundMatch()
+    const match = this.matches(text)
+    if (match) {
+      await this.foundMatch(match)
     }
   }
 
@@ -38,15 +39,16 @@ export default class BaseSubscription {
     throw new Error("implement in subclass")
   }
 
-  // called when a match is found
-  async foundMatch() {
+  // called with the matching text when a match is found
+  async foundMatch(text: string) {
     debug(`found match for ${this.getDisplayName()}`)
     await delay(1)
-    this.resolve()
+    this.resolve(text)
   }
 
-  // returns whether the given text contains the search text this search is looking for
-  matches(_: string): boolean {
+  // Indicates whether the given text contains the pattern this subscription is looking for
+  // by returning the matching text or null if there are no matches
+  matches(_: string): string | null {
     throw new Error("implement in subclass")
   }
 
