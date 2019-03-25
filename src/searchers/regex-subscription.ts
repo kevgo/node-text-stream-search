@@ -26,8 +26,14 @@ export default class RegexSubscription extends BaseSubscription
     return `regex '${this.searchRegexp.toString()}'`
   }
 
-  // returns whether the given text contains the search text this search is looking for
-  matches(text: string): boolean {
-    return this.searchRegexp.test(text)
+  // Indicates whether the given text contains the RegExp this subscription is looking for
+  // by returning the matching text or null if there are no matches
+  matches(text: string): string | null {
+    const matches = text.match(this.searchRegexp)
+    if (matches) {
+      return matches[0]
+    } else {
+      return null
+    }
   }
 }

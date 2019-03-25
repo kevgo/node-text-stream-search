@@ -1,1 +1,1 @@
-export type ResolveFunction = () => void
+export type ResolveFunction = (text: string) => void

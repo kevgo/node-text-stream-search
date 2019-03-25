@@ -30,7 +30,7 @@ class TextStreamSearch {
 
   // Returns a promise that resolves when the given text shows up in the observed stream.
   // If a timeout iss given, aborts after the given duration.
-  async waitForText(text: string, timeout?: number) {
+  async waitForText(text: string, timeout?: number): Promise<string> {
     debug(`adding text subscription: '${text}'`)
     return new Promise(async (resolve, reject) => {
       this.subscriptions.push(
@@ -40,9 +40,10 @@ class TextStreamSearch {
     })
   }
 
-  // Calls the given handler when the given text shows up in the output
-  // If a timeout iss given, aborts after the given duration.
-  waitForRegex(regex: RegExp, timeout?: number): Promise<void> {
+  // Calls the given handler with the matching text
+  // when the given RegExp shows up in the output
+  // If a timeout is given, aborts after the given duration.
+  waitForRegex(regex: RegExp, timeout?: number): Promise<string> {
     debug(`adding regex subscription: ${regex.toString()}`)
     return new Promise((resolve, reject) => {
       this.subscriptions.push(
