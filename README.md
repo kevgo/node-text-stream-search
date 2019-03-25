@@ -15,7 +15,8 @@ import StreamSearch from "text-stream-search"
 
 const streamSearch = new TextStreamSearch(myStream)
 await streamSearch.waitForText("hello")
-await streamSearch.waitForRegex("listening at port d+")
+const matching = await streamSearch.waitForRegex("listening at port \\d+")
+// matching contains something like "listening at port 3000"
 ```
 
 More use cases are described [here](features/wait.feature).
