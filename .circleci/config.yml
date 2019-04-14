@@ -15,7 +15,7 @@ jobs:
             - yarn-master
             - yarn-
       - run: yarn
-      - run: make spec
+      - run: make test
       - save_cache:
           name: save Yarn cache
           key: yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}

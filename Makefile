@@ -40,7 +40,8 @@ setup:   # sets up the installation on this machine
 	node_modules$/o-tools$/bin$/check-paths
 	yarn install
 
-spec: lint cuke docs   # runs all tests
+test: lint cuke docs   # runs all tests
+.PHONY: test
 
 upgrade:   # updates the dependencies to their latest versions
 	yarn upgrade --latest
