@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-expression */
 
-import { expect } from "chai"
+import { strict as assert } from "assert"
 import { Given, Then, When } from "cucumber"
 import delay from "delay"
 import * as inspect from "es6-promise-inspect"
@@ -48,11 +48,11 @@ When(/^the stream emits "([^"]*)"$/, function(text) {
 })
 
 Then(/^it returns "([^"]*)"$/, function(expectedText) {
-  expect(this.result).to.equal(expectedText)
+  assert.equal(this.result, expectedText)
 })
 
 Then(/^its accumulated text is empty$/, function() {
-  expect(this.instance.fullText()).to.be.empty
+  assert.equal(this.instance.fullText(), "")
 })
 
 Then(/^the promise for "([^"]*)" resolves$/, { timeout: 10 }, async function(
@@ -68,13 +68,13 @@ Then(
   async function(searchTerm, expectedResult) {
     const promise = this.promises[searchTerm]
     const actualResult = await promise // if the promise doesn't resolve here, the step will timeout in 10 ms
-    expect(actualResult).to.equal(expectedResult)
+    assert.equal(actualResult, expectedResult)
   }
 )
 
 Then(/^the promise for "([^"]*)" does not resolve/, async function(searchTerm) {
   await delay(10)
-  expect(inspect.getStatus(this.promises[searchTerm])).to.equal("pending")
+  assert.equal(inspect.getStatus(this.promises[searchTerm]), "pending")
 })
 
 Then(
@@ -85,10 +85,13 @@ Then(
     try {
       await promise
     } catch (err) {
-      expect(err.message).to.equal(errorMessage)
+      assert.equal(err.message, errorMessage)
       const end = new Date()
       const elapsed = end.getTime() - start.getTime()
-      expect(elapsed).to.be.lessThan(parseInt(pause, 10))
+      assert.ok(
+        elapsed <= parseInt(pause, 10),
+        `expected ${elapsed} to be less than ${pause}`
+      )
     }
   }
 )
@@ -98,6 +101,6 @@ Then(
   async function(pause, searchTerm) {
     await delay(parseInt(pause, 10))
     const promiseInfo = inspect.getStatus(this.promises[searchTerm])
-    expect(promiseInfo).to.equal("pending")
+    assert.equal(promiseInfo, "pending")
   }
 )
