@@ -1,11 +1,5 @@
 {
-  "include": [
-    "src/*.ts",
-    "src/searchers/string-subscription.ts",
-    "src/searchers/regex-subscription.ts",
-    "src/searchers/base-subscription.ts",
-    "src/types/subscription.ts"
-  ],
+  "include": ["src/**/*.ts"],
   "compilerOptions": {
     /* Basic Options */
     "target": "es2017" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,

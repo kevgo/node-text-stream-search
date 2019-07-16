@@ -1,6 +1,6 @@
-import { RegexSubscription } from "./searchers/regex-subscription"
-import { StringSubscription } from "./searchers/string-subscription"
 import { SubscriptionList } from "./subscription-list"
+import { RegexSubscription } from "./subscriptions/regex-subscription"
+import { StringSubscription } from "./subscriptions/string-subscription"
 import { TextAccumulator } from "./text-accumulator"
 import { SimpleReadableStream } from "./types/simple-readable-stream"
 
