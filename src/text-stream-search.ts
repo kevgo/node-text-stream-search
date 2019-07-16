@@ -1,6 +1,6 @@
-import { SubscriptionList } from "./subscription-list"
-import { RegexSubscription } from "./subscriptions/regex-subscription"
-import { StringSubscription } from "./subscriptions/string-subscription"
+import { SearchList } from "./search-list"
+import { RegexSearch } from "./searches/regex-search"
+import { StringSearch } from "./searches/string-search"
 import { TextAccumulator } from "./text-accumulator"
 import { SimpleReadableStream } from "./types/simple-readable-stream"
 
@@ -15,11 +15,11 @@ export class TextStreamSearch {
    * Subscriptions contains all the requests from users of this library
    * to be notified when a particular text or regex shows up in the text stream.
    */
-  private subscriptions: SubscriptionList
+  private searchList: SearchList
 
   constructor(stream: SimpleReadableStream) {
     this.streamText = new TextAccumulator()
-    this.subscriptions = new SubscriptionList()
+    this.searchList = new SearchList()
     stream.on("data", this.onStreamData.bind(this))
   }
 
@@ -30,10 +30,10 @@ export class TextStreamSearch {
    */
   waitForText(text: string, timeout?: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.subscriptions.push(
-        new StringSubscription(text, resolve, reject, this.streamText, timeout)
+      this.searchList.push(
+        new StringSearch(text, resolve, reject, this.streamText, timeout)
       )
-      this.subscriptions.checkText(this.streamText.toString())
+      this.searchList.scan()
     })
   }
 
@@ -44,16 +44,16 @@ export class TextStreamSearch {
    */
   waitForRegex(regex: RegExp, timeout?: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.subscriptions.push(
-        new RegexSubscription(regex, resolve, reject, this.streamText, timeout)
+      this.searchList.push(
+        new RegexSearch(regex, resolve, reject, this.streamText, timeout)
       )
-      this.subscriptions.checkText(this.streamText.toString())
+      this.searchList.scan()
     })
   }
 
   /** OnStreamData is called when new text arrives on the input stream. */
   private onStreamData(data: Buffer) {
     this.streamText.push(data.toString())
-    this.subscriptions.checkText(this.streamText.toString())
+    this.searchList.scan()
   }
 }

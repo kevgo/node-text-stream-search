@@ -1,24 +1,24 @@
 import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
-import { Subscription } from "../types/subscription.js"
 
 /**
- * StringSubscription calls the given resolve function exactly once
- * when it finds the given string in the text it monitors.
- * When the given time expires, it calls the given reject function.
+ * StringSearch is the search for a particular string in the text stream.
+ * The search is over once the s
+ * It reports success to its the  the given resolve function once when it finds the query string.
+ * When reaching the given timeoutDuration, it abourts the search and calls the given reject function.
  */
-export class StringSubscription implements Subscription {
+export class StringSearch {
   /** the resolve function to call when the searchText is found */
   resolve: ResolveFunction
 
-  /** the reject function to call when the timeoutDuration is reached */
+  /** the reject function to call when the search expires */
   reject: RejectFunction
 
-  /** time after which this subscription should abort, in milliseconds */
+  /** time after which this search expires and should be aborted, in milliseconds */
   timeoutDuration?: number
 
-  /** object containing the text received so far */
+  /** the stream content that has accumulated so far */
   text: TextAccumulator
 
   /** the search string to look for in the received text */
@@ -45,8 +45,8 @@ export class StringSubscription implements Subscription {
    * Checks the given text for the searchText.
    * Calls the resolve function when it finds it.
    */
-  check(text: string) {
-    if (text.includes(this.searchText)) {
+  scan() {
+    if (this.text.toString().includes(this.searchText)) {
       this.resolve(this.searchText)
     }
   }

@@ -1,26 +1,24 @@
 import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
-import { Subscription } from "../types/subscription.js"
 
 /**
- * RegexSubscription calls the given handler exactly one time
- * when text matches the given regex.
+ * RegexSearch looks for the given regex in the text stream.
  */
-export class RegexSubscription implements Subscription {
+export class RegexSearch {
   /** the resolve function to call when the searchText is found */
   resolve: ResolveFunction
 
-  /** the reject function to call when the timeoutDuration is reached */
+  /** the reject function to call when the search expires */
   reject: RejectFunction
 
-  /** time after which this subscription should abort, in milliseconds */
+  /** time after which this search expires and should be aborted, in milliseconds */
   timeoutDuration?: number
 
-  /** object containing the text received so far */
+  /** the stream content that has accumulated so far */
   text: TextAccumulator
 
-  /** the search string to look for in the received text */
+  /** the regular expression to look for in the stream text */
   searchRegexp: RegExp
 
   constructor(
@@ -40,18 +38,15 @@ export class RegexSubscription implements Subscription {
     }
   }
 
-  /**
-   * Checks the given text for occurrences of the searchRegexp.
-   * Calls the resolve function when it finds it.
-   */
-  check(text: string) {
-    const matches = text.match(this.searchRegexp)
+  /** Scan checks the stream text for occurrences of the searchRegexp. */
+  scan() {
+    const matches = this.text.toString().match(this.searchRegexp)
     if (matches) {
       this.resolve(matches[0])
     }
   }
 
-  /** called after this subscription times out */
+  /** OnTimeOut is called after this subscription times out. */
   private onTimeout() {
     this.reject(
       new Error(
