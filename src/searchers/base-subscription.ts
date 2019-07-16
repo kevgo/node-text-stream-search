@@ -3,8 +3,9 @@ import TextStreamAccumulator from "text-stream-accumulator"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 
-// calls the given handler exactly one time
-// when text matches the given string
+/**
+ * BaseSubscription calls the given resolve function when text matches the given string.
+ */
 export abstract class BaseSubscription {
   accumulator: TextStreamAccumulator
   resolve: ResolveFunction
@@ -24,7 +25,7 @@ export abstract class BaseSubscription {
     }
   }
 
-  // checks for matches
+  /** checks for matches */
   async check(text: string) {
     const match = this.matches(text)
     if (match) {
@@ -36,19 +37,21 @@ export abstract class BaseSubscription {
     throw new Error("implement in subclass")
   }
 
-  // called with the matching text when a match is found
+  /** called with the matching text when a match is found */
   async foundMatch(text: string) {
     await delay(1)
     this.resolve(text)
   }
 
-  // Indicates whether the given text contains the pattern this subscription is looking for
-  // by returning the matching text or null if there are no matches
+  /**
+   * Indicates whether the given text contains the pattern this subscription is looking for
+   * by returning the matching text or null if there are no matches
+   */
   matches(_: string): string | null {
     throw new Error("implement in subclass")
   }
 
-  // called after a given timeout
+  /** called after a given timeout */
   onTimeout() {
     const errorMessage = `Expected '${this.accumulator.toString()}' to include ${this.getDisplayName()}`
     this.reject(new Error(errorMessage))

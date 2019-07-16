@@ -4,8 +4,10 @@ import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
 import { BaseSubscription } from "./base-subscription"
 
-// Calls the given handler exactly one time
-// when text matches the given string
+/**
+ * StringSubscription calls the given handler exactly one time
+ * when text matches the given string.
+ */
 export class StringSubscription extends BaseSubscription
   implements Subscription {
   searchText: string
@@ -21,13 +23,15 @@ export class StringSubscription extends BaseSubscription
     this.searchText = query
   }
 
-  // Returns the display name for debug / error messages
+  /** returns the display name for debug / error messages */
   getDisplayName(): string {
     return `string '${this.searchText}'`
   }
 
-  // Indicates whether the given text contains the string this subscription is looking for
-  // by returning the matching text or null if there are no matches
+  /**
+   * Indicates whether the given text contains the string this subscription is looking for
+   * by returning the matching text or null if there are no matches.
+   */
   matches(text: string): string | null {
     const found = text.includes(this.searchText)
     if (found) {
