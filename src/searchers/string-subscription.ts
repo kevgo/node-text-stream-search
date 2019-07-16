@@ -1,10 +1,8 @@
-import deb from "debug"
 import TextStreamAccumulator from "text-stream-accumulator"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
 import { BaseSubscription } from "./base-subscription"
-const debug = deb("text-stream-search:string-search")
 
 // Calls the given handler exactly one time
 // when text matches the given string
@@ -33,10 +31,8 @@ export class StringSubscription extends BaseSubscription
   matches(text: string): string | null {
     const found = text.includes(this.searchText)
     if (found) {
-      debug(`search for '${this.searchText}' found a match in '${text}'`)
       return this.searchText
     } else {
-      debug(`no match in '${text}'`)
       return null
     }
   }
