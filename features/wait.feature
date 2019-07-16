@@ -46,7 +46,8 @@ Feature: Recognizing text in streams
     When the stream emits "So I said hi to her"
     Then within 1500 milliseconds the promise for "hello" rejects with the error:
       """
-      Expected 'So I said hi to her' to include string 'hello'
+      string 'hello' not found within 1000 ms. The captured text so far is:
+      So I said hi to her
       """
 
 

@@ -1,4 +1,4 @@
-import TextStreamAccumulator from "text-stream-accumulator"
+import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
@@ -14,12 +14,12 @@ export class StringSubscription extends BaseSubscription
 
   constructor(
     query: string,
-    accumulator: TextStreamAccumulator,
     resolve: ResolveFunction,
     reject: RejectFunction,
+    text: TextAccumulator,
     timeout?: number
   ) {
-    super(accumulator, resolve, reject, timeout)
+    super(resolve, reject, text, timeout)
     this.searchText = query
   }
 
@@ -33,8 +33,7 @@ export class StringSubscription extends BaseSubscription
    * by returning the matching text or null if there are no matches.
    */
   matches(text: string): string | null {
-    const found = text.includes(this.searchText)
-    if (found) {
+    if (text.includes(this.searchText)) {
       return this.searchText
     } else {
       return null

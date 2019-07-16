@@ -40,8 +40,11 @@ setup:   # sets up the installation on this machine
 	node_modules$/o-tools$/bin$/check-paths
 	yarn install
 
-test: lint cuke docs   # runs all tests
+test: lint unit cuke docs   # runs all tests
 .PHONY: test
+
+unit:   # runs the unit tests
+	@node_modules/.bin/mocha --reporter dot
 
 upgrade:   # updates the dependencies to their latest versions
 	yarn upgrade --latest

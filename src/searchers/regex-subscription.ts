@@ -1,4 +1,4 @@
-import TextStreamAccumulator from "text-stream-accumulator"
+import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
@@ -14,12 +14,12 @@ export class RegexSubscription extends BaseSubscription
 
   constructor(
     regex: RegExp,
-    accumulator: TextStreamAccumulator,
     resolve: ResolveFunction,
     reject: RejectFunction,
+    text: TextAccumulator,
     timeout?: number
   ) {
-    super(accumulator, resolve, reject, timeout)
+    super(resolve, reject, text, timeout)
     this.searchRegexp = regex
   }
 

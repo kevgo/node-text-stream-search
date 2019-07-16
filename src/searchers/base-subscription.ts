@@ -1,5 +1,5 @@
 import delay from "delay"
-import TextStreamAccumulator from "text-stream-accumulator"
+import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 
@@ -7,20 +7,22 @@ import { ResolveFunction } from "../types/resolve-function.js"
  * BaseSubscription calls the given resolve function when text matches the given string.
  */
 export abstract class BaseSubscription {
-  accumulator: TextStreamAccumulator
   resolve: ResolveFunction
   reject: RejectFunction
+  timeout?: number
+  text: TextAccumulator
 
   constructor(
-    accumulator: TextStreamAccumulator,
     resolve: ResolveFunction,
     reject: RejectFunction,
+    text: TextAccumulator,
     timeout?: number
   ) {
-    this.accumulator = accumulator
     this.resolve = resolve
     this.reject = reject
+    this.text = text
     if (timeout != null) {
+      this.timeout = timeout
       setTimeout(this.onTimeout.bind(this), timeout)
     }
   }
@@ -53,7 +55,12 @@ export abstract class BaseSubscription {
 
   /** called after a given timeout */
   onTimeout() {
-    const errorMessage = `Expected '${this.accumulator.toString()}' to include ${this.getDisplayName()}`
-    this.reject(new Error(errorMessage))
+    this.reject(
+      new Error(
+        `${this.getDisplayName()} not found within ${
+          this.timeout
+        } ms. The captured text so far is:\n${this.text.toString()}`
+      )
+    )
   }
 }

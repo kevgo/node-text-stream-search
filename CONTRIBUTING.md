@@ -8,6 +8,7 @@
 ## Run tests
 
 - run all tests: <code textrun="verify-make-command">make test</code>
+- run all tests: <code textrun="verify-make-command">make unit</code>
 - run linters: <code textrun="verify-make-command">make lint</code>
 
 ## Update dependencies

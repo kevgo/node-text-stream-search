@@ -51,10 +51,6 @@ Then(/^it returns "([^"]*)"$/, function(expectedText) {
   assert.equal(this.result, expectedText)
 })
 
-Then(/^its accumulated text is empty$/, function() {
-  assert.equal(this.instance.fullText(), "")
-})
-
 Then(/^the promise for "([^"]*)" resolves$/, { timeout: 10 }, async function(
   searchTerm
 ) {

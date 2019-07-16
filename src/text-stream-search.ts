@@ -1,82 +1,59 @@
-import TextStreamAccumulator, { ReadableStream } from "text-stream-accumulator"
 import { RegexSubscription } from "./searchers/regex-subscription"
 import { StringSubscription } from "./searchers/string-subscription"
-import { Subscription } from "./types/subscription.js"
+import { SubscriptionList } from "./subscription-list"
+import { TextAccumulator } from "./text-accumulator"
+import { SimpleReadableStream } from "./types/simple-readable-stream"
 
 /**
  * TextStreamSearch finds occurrences of a given text or regular expression in a given text stream.
  */
 export class TextStreamSearch {
   /** the output captured so far */
-  private accumulator: TextStreamAccumulator
+  private streamText: TextAccumulator
 
   /**
    * Subscriptions contains all the requests from users of this library
    * to be notified when a particular text or regex shows up in the text stream.
    */
-  private subscriptions: Subscription[]
+  private subscriptions: SubscriptionList
 
-  constructor(stream: ReadableStream) {
-    this.subscriptions = []
+  constructor(stream: SimpleReadableStream) {
+    this.streamText = new TextAccumulator()
+    this.subscriptions = new SubscriptionList()
     stream.on("data", this.onStreamData.bind(this))
-    this.accumulator = new TextStreamAccumulator(stream)
-  }
-
-  /** returns the full text received from the stream so far */
-  fullText(): string {
-    return this.accumulator.toString()
-  }
-
-  /** deletes all accumulated text */
-  reset() {
-    this.accumulator.reset()
   }
 
   /**
-   * Returns a promise that resolves when the given text shows up in the observed stream.
+   * Returns a promise that resolves with the matching text
+   * when the given text shows up in the observed stream.
    * If a timeout is given, aborts after the given duration.
    */
   async waitForText(text: string, timeout?: number): Promise<string> {
     return new Promise(async (resolve, reject) => {
       this.subscriptions.push(
-        new StringSubscription(text, this.accumulator, resolve, reject, timeout)
+        new StringSubscription(text, resolve, reject, this.streamText, timeout)
       )
-      // TODO: add return here
-      this.checkSubscriptions()
+      this.subscriptions.checkText(this.streamText.toString())
     })
   }
 
   /**
-   * Returns a promise that resolves when the given RegExp shows up in observed stream.
+   * Returns a promise that resolves with the matching text
+   * when the given RegExp shows up in observed stream.
    * If a timeout is given, aborts after the given duration.
    */
   waitForRegex(regex: RegExp, timeout?: number): Promise<string> {
     return new Promise((resolve, reject) => {
       this.subscriptions.push(
-        new RegexSubscription(regex, this.accumulator, resolve, reject, timeout)
+        new RegexSubscription(regex, resolve, reject, this.streamText, timeout)
       )
-      this.checkSubscriptions()
+      this.subscriptions.checkText(this.streamText.toString())
     })
   }
 
-  /** called when new text arrives on the stream */
-  private onStreamData() {
-    // NOTE: The accumulator accumulates the stream on its own.
-    //       We just need to wait for the next tick to give it time to update here.
-    process.nextTick(() => {
-      this.checkSubscriptions()
-    })
-  }
-
-  /**
-   * Looks for new matches in the received text.
-   *
-   * Called each time the text or search terms change.
-   */
-  private async checkSubscriptions() {
-    const text = this.fullText()
-    for (const subscription of this.subscriptions) {
-      await subscription.check(text)
-    }
+  /** OnStreamData is called when new text arrives on the input stream. */
+  private onStreamData(data: Buffer) {
+    this.streamText.push(data.toString())
+    this.subscriptions.checkText(this.streamText.toString())
   }
 }
