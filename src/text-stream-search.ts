@@ -6,7 +6,7 @@ import { Subscription } from "./types/subscription.js"
 /**
  * TextStreamSearch finds occurrences of a given text or regular expression in a given text stream.
  */
-class TextStreamSearch {
+export class TextStreamSearch {
   /** the output captured so far */
   private accumulator: TextStreamAccumulator
 
@@ -77,9 +77,3 @@ class TextStreamSearch {
     }
   }
 }
-
-// Add compatibility with `import TextStreamSearch from '...'`
-Object.defineProperty(TextStreamSearch, "__esModule", { value: true })
-Object.defineProperty(TextStreamSearch, "default", { value: TextStreamSearch })
-
-export = TextStreamSearch

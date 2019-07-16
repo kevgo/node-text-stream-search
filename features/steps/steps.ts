@@ -5,7 +5,7 @@ import { Given, Then, When } from "cucumber"
 import delay from "delay"
 import * as inspect from "es6-promise-inspect"
 import { ReadableStream } from "memory-streams"
-import TextStreamSearch from "../.."
+import { TextStreamSearch } from "../.."
 
 Given(/^a TextStreamSearch instance$/, function() {
   this.stream = new ReadableStream("")
