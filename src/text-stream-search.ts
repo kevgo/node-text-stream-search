@@ -10,7 +10,10 @@ export class TextStreamSearch {
   /** the output captured so far */
   private accumulator: TextStreamAccumulator
 
-  /** requests from users of this library to be notified */
+  /**
+   * Subscriptions contains all the requests from users of this library
+   * to be notified when a particular text or regex shows up in the text stream.
+   */
   private subscriptions: Subscription[]
 
   constructor(stream: ReadableStream) {
