@@ -4,14 +4,24 @@ import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
 
 /**
- * StringSubscription calls the given handler exactly one time
- * when text matches the given string.
+ * StringSubscription calls the given resolve function exactly once
+ * when it finds the given string in the text it monitors.
+ * When the given time expires, it calls the given reject function.
  */
 export class StringSubscription implements Subscription {
+  /** the resolve function to call when the searchText is found */
   resolve: ResolveFunction
+
+  /** the reject function to call when the timeoutDuration is reached */
   reject: RejectFunction
+
+  /** time after which this subscription should abort, in milliseconds */
   timeoutDuration?: number
+
+  /** object containing the text received so far */
   text: TextAccumulator
+
+  /** the search string to look for in the received text */
   searchText: string
 
   constructor(
@@ -32,8 +42,8 @@ export class StringSubscription implements Subscription {
   }
 
   /**
-   * Checks the given text for matches.
-   * Notifies the subscribers of matches found.
+   * Checks the given text for the searchText.
+   * Calls the resolve function when it finds it.
    */
   check(text: string) {
     if (text.includes(this.searchText)) {

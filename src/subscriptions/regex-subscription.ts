@@ -8,10 +8,19 @@ import { Subscription } from "../types/subscription.js"
  * when text matches the given regex.
  */
 export class RegexSubscription implements Subscription {
+  /** the resolve function to call when the searchText is found */
   resolve: ResolveFunction
+
+  /** the reject function to call when the timeoutDuration is reached */
   reject: RejectFunction
+
+  /** time after which this subscription should abort, in milliseconds */
   timeoutDuration?: number
+
+  /** object containing the text received so far */
   text: TextAccumulator
+
+  /** the search string to look for in the received text */
   searchRegexp: RegExp
 
   constructor(
@@ -31,7 +40,10 @@ export class RegexSubscription implements Subscription {
     }
   }
 
-  /** checks for matches */
+  /**
+   * Checks the given text for occurrences of the searchRegexp.
+   * Calls the resolve function when it finds it.
+   */
   check(text: string) {
     const matches = text.match(this.searchRegexp)
     if (matches) {
