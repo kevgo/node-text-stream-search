@@ -28,8 +28,8 @@ export class TextStreamSearch {
    * when the given text shows up in the observed stream.
    * If a timeout is given, aborts after the given duration.
    */
-  async waitForText(text: string, timeout?: number): Promise<string> {
-    return new Promise(async (resolve, reject) => {
+  waitForText(text: string, timeout?: number): Promise<string> {
+    return new Promise((resolve, reject) => {
       this.subscriptions.push(
         new StringSubscription(text, resolve, reject, this.streamText, timeout)
       )

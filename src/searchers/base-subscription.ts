@@ -1,4 +1,3 @@
-import delay from "delay"
 import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
@@ -28,21 +27,15 @@ export abstract class BaseSubscription {
   }
 
   /** checks for matches */
-  async check(text: string) {
+  check(text: string) {
     const match = this.matches(text)
     if (match) {
-      await this.foundMatch(match)
+      this.resolve(match)
     }
   }
 
   getDisplayName(): string {
     throw new Error("implement in subclass")
-  }
-
-  /** called with the matching text when a match is found */
-  async foundMatch(text: string) {
-    await delay(1)
-    this.resolve(text)
   }
 
   /**
