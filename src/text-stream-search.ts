@@ -57,7 +57,7 @@ class TextStreamSearch {
   }
 
   /** called when new text arrives on the stream */
-  onStreamData() {
+  private onStreamData() {
     // NOTE: The accumulator accumulates the stream on its own.
     //       We just need to wait for the next tick to give it time to update here.
     process.nextTick(() => {
@@ -70,7 +70,7 @@ class TextStreamSearch {
    *
    * Called each time the text or search terms change.
    */
-  async checkSubscriptions() {
+  private async checkSubscriptions() {
     const text = this.fullText()
     for (const subscription of this.subscriptions) {
       await subscription.check(text)
