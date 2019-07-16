@@ -2,14 +2,16 @@ import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
-import { BaseSubscription } from "./base-subscription"
 
 /**
  * RegexSubscription calls the given handler exactly one time
  * when text matches the given regex.
  */
-export class RegexSubscription extends BaseSubscription
-  implements Subscription {
+export class RegexSubscription implements Subscription {
+  resolve: ResolveFunction
+  reject: RejectFunction
+  timeoutDuration?: number
+  text: TextAccumulator
   searchRegexp: RegExp
 
   constructor(
@@ -17,27 +19,34 @@ export class RegexSubscription extends BaseSubscription
     resolve: ResolveFunction,
     reject: RejectFunction,
     text: TextAccumulator,
-    timeout?: number
+    timeoutDuration?: number
   ) {
-    super(resolve, reject, text, timeout)
+    this.resolve = resolve
+    this.reject = reject
+    this.text = text
     this.searchRegexp = regex
+    if (timeoutDuration != null) {
+      this.timeoutDuration = timeoutDuration
+      setTimeout(this.onTimeout.bind(this), timeoutDuration)
+    }
   }
 
-  /** returns the display name for debug / error messages */
-  getDisplayName(): string {
-    return `regex '${this.searchRegexp.toString()}'`
-  }
-
-  /**
-   * Indicates whether the given text contains the RegExp this subscription is looking for
-   * by returning the matching text or null if there are no matches.
-   */
-  matches(text: string): string | null {
+  /** checks for matches */
+  check(text: string) {
     const matches = text.match(this.searchRegexp)
     if (matches) {
-      return matches[0]
-    } else {
-      return null
+      this.resolve(matches[0])
     }
+  }
+
+  /** called after this subscription times out */
+  private onTimeout() {
+    this.reject(
+      new Error(
+        `Regex /${this.searchRegexp}/ not found within ${
+          this.timeoutDuration
+        } ms. The captured text so far is:\n${this.text.toString()}`
+      )
+    )
   }
 }

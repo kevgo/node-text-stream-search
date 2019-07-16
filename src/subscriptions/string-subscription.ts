@@ -2,14 +2,16 @@ import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
 import { Subscription } from "../types/subscription.js"
-import { BaseSubscription } from "./base-subscription"
 
 /**
  * StringSubscription calls the given handler exactly one time
  * when text matches the given string.
  */
-export class StringSubscription extends BaseSubscription
-  implements Subscription {
+export class StringSubscription implements Subscription {
+  resolve: ResolveFunction
+  reject: RejectFunction
+  timeoutDuration?: number
+  text: TextAccumulator
   searchText: string
 
   constructor(
@@ -19,24 +21,34 @@ export class StringSubscription extends BaseSubscription
     text: TextAccumulator,
     timeout?: number
   ) {
-    super(resolve, reject, text, timeout)
+    this.resolve = resolve
+    this.reject = reject
+    this.text = text
     this.searchText = query
-  }
-
-  /** returns the display name for debug / error messages */
-  getDisplayName(): string {
-    return `string '${this.searchText}'`
+    if (timeout != null) {
+      this.timeoutDuration = timeout
+      setTimeout(this.onTimeout.bind(this), timeout)
+    }
   }
 
   /**
-   * Indicates whether the given text contains the string this subscription is looking for
-   * by returning the matching text or null if there are no matches.
+   * Checks the given text for matches.
+   * Notifies the subscribers of matches found.
    */
-  matches(text: string): string | null {
+  check(text: string) {
     if (text.includes(this.searchText)) {
-      return this.searchText
-    } else {
-      return null
+      this.resolve(this.searchText)
     }
+  }
+
+  /** called after this subscription times out */
+  private onTimeout() {
+    this.reject(
+      new Error(
+        `Text "${this.searchText}" not found within ${
+          this.timeoutDuration
+        } ms. The captured text so far is:\n${this.text.toString()}`
+      )
+    )
   }
 }

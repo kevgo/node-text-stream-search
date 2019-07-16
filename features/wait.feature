@@ -42,11 +42,11 @@ Feature: Recognizing text in streams
 
 
   Scenario: The expected text stream never contains the search term (with timeout)
-    Given I tell it to wait for "hello" with a timeout of 1000 milliseconds
+    Given I tell it to wait for "hello" with a timeout of 10 milliseconds
     When the stream emits "So I said hi to her"
-    Then within 1500 milliseconds the promise for "hello" rejects with the error:
+    Then within 15 milliseconds the promise for "hello" rejects with the error:
       """
-      string 'hello' not found within 1000 ms. The captured text so far is:
+      Text "hello" not found within 10 ms. The captured text so far is:
       So I said hi to her
       """
 
