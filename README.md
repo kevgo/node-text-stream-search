@@ -6,9 +6,8 @@
 [![Dependency Status](https://david-dm.org/originate/node-text-stream-search.svg)](https://david-dm.org/originate/node-text-stream-search)
 [![devDependency Status](https://david-dm.org/originate/node-text-stream-search/dev-status.svg)](https://david-dm.org/originate/node-text-stream-search#info=devDependencies)
 
-Simple and robust way to scan text streams for text.
-This works with anything that emits `data` events with text
-in the form of Buffers or strings.
+Simple and robust way to scan text streams for text. This works with anything
+that emits `data` events with text in the form of Buffers or strings.
 
 ```javascript
 import StreamSearch from "text-stream-search"
@@ -25,8 +24,8 @@ const matching = await streamSearch.waitForRegex("listening at port \\d+")
 
 ## Related Projects
 
-- [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing with regular expressions,
-  but is buggy and blocks the event queue
+- [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing
+  with regular expressions, but is buggy and blocks the event queue
 
 ## Development
 
@@ -36,7 +35,8 @@ const matching = await streamSearch.waitForRegex("listening at port \\d+")
 - run unit tests: <code textrun="verify-make-command">make unit</code>
 - run linters: <code textrun="verify-make-command">make lint</code>
 - fix formatting issues: <code textrun="verify-make-command">make lint</code>
-- see all available make commands: <code textrun="verify-make-command">make help</code>
+- see all available make commands: <code textrun="verify-make-command">make
+  help</code>
 
 ### Deploy a new version
 

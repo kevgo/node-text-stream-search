@@ -7,7 +7,7 @@ const readFile = util.promisify(fs.readFile)
 module.exports = async function(args) {
   const expected = args.nodes
     .text()
-    .replace(/make\s+/, "")
+    .replace(/make\s*/, "")
     .trim()
   args.formatter.name(`verify Make command "${expected}" exists`)
   const makefilePath = path.join(args.configuration.sourceDir, "Makefile")
