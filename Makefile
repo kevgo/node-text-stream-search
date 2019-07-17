@@ -14,9 +14,6 @@ build: clean    # builds for the current platform
 clean:   # removes all build artifacts
 	@rm -rf dist
 
-deploy: build  # deploys a new version to npmjs.org
-	npm publish
-
 docs: build   # runs the documentation tests
 	@node_modules$/.bin$/text-run --offline --format dot
 
@@ -33,15 +30,8 @@ lint:   # lints all files
 	node_modules/.bin/prettier -l "src/**/*.ts"
 	node_modules/.bin/prettier -l "**/*.md"
 
-setup:   # sets up the installation on this machine
-	node_modules$/o-tools$/bin$/check-paths
-	yarn install
-
 test: lint unit docs   # runs all tests
 .PHONY: test
 
 unit:   # runs the unit tests
 	@node_modules/.bin/mocha --reporter dot
-
-upgrade:   # updates the dependencies to their latest versions
-	yarn upgrade --latest

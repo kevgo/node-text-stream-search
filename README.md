@@ -30,4 +30,18 @@ const matching = await streamSearch.waitForRegex("listening at port \\d+")
 
 ## Development
 
-See our [developer guidelines](CONTRIBUTING.md)
+### Run tests
+
+- run all tests: <code textrun="verify-make-command">make test</code>
+- run unit tests: <code textrun="verify-make-command">make unit</code>
+- run linters: <code textrun="verify-make-command">make lint</code>
+- fix formatting issues: <code textrun="verify-make-command">make lint</code>
+- see all available make commands: <code textrun="verify-make-command">make help</code>
+
+### Deploy a new version
+
+```
+$ yarn version
+$ git push
+$ git push --tags // CI will publish to NPM
+```
