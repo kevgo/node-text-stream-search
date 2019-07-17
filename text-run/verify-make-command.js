@@ -1,4 +1,3 @@
-const { cyan } = require("chalk")
 const fs = require("fs")
 const os = require("os")
 const path = require("path")
@@ -10,7 +9,7 @@ module.exports = async function(args) {
     .text()
     .replace(/make\s+/, "")
     .trim()
-  args.formatter.name(`verify Make command ${cyan(expected)} exists`)
+  args.formatter.name(`verify Make command "${expected}" exists`)
   const makefilePath = path.join(args.configuration.sourceDir, "Makefile")
   const makefileContent = await readFile(makefilePath, "utf8")
   const commands = makefileContent
@@ -18,7 +17,7 @@ module.exports = async function(args) {
     .filter(lineDefinesMakeCommand)
     .map(extractMakeCommand)
   if (!commands.includes(expected)) {
-    throw new Error(`Make command ${cyan(expected)} not found in ${commands}`)
+    throw new Error(`Make command "${expected}" not found in: ${commands}`)
   }
 }
 
