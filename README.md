@@ -9,7 +9,7 @@ term (string or Regex) in a Node.js stream, i.e. anything that emits `data`
 events with Buffers or strings.
 
 ```javascript
-import { StreamSearch } from "text-stream-search"
+import { TextStreamSearch } from "text-stream-search"
 
 const streamSearch = new TextStreamSearch(myStream)
 
