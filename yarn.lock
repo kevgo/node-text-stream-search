@@ -792,11 +792,6 @@ es-to-primitive@^1.2.0:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-es6-promise-inspect@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/es6-promise-inspect/-/es6-promise-inspect-2.0.0.tgz#90f3343c0514ea1fdbf10f411a5261a7287d5de9"
-  integrity sha512-+Tfl/D3cnxZI0lfLBO8pJxQTXQMxAUAyTNdb4fJBlxKvQsfGtsuo1W2Lb2Dvxy459gJNN+uLEyDtiTzofQSskQ==
-
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
