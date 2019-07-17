@@ -22,8 +22,7 @@
     "typescript": "3.5.3"
   },
   "files": [
-    "dist",
-    "yarn.lock"
+    "dist"
   ],
   "homepage": "https://github.com/Originate/node-text-stream-search#readme",
   "license": "ISC",
