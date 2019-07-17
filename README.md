@@ -1,10 +1,11 @@
 # Text Search in Node.JS Streams
 
 [![Circle CI](https://circleci.com/gh/kevgo/node-text-stream-search.svg?style=shield)](https://circleci.com/gh/kevgo/node-text-stream-search)
+[![Code Coverage](https://coveralls.io/repos/github/kevgo/node-text-stream-search/badge.svg?branch=master)](https://coveralls.io/github/kevgo/node-text-stream-search?branch=master)
 
 This micro-library (no dependencies) searches for occurrences of a given search
-term (text or regular expression) in a Node.js stream, i.e. anything that emits
-`data` events with Buffers or strings.
+term (string or Regex) in a Node.js stream, i.e. anything that emits `data`
+events with Buffers or strings.
 
 ```javascript
 import { StreamSearch } from "text-stream-search"
@@ -19,14 +20,12 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 // matchingText contains something like "listening at port 3000."
 ```
 
-## Related Projects
+## Related projects
 
 - [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing
   with regular expressions, but is buggy and blocks the event queue
 
 ## Development
-
-#### Run tests
 
 - run all tests: <code textrun="verify-make-command">make test</code>
 - run unit tests: <code textrun="verify-make-command">make unit</code>
@@ -37,8 +36,5 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 
 #### Deploy a new version
 
-```
-$ yarn version
-$ git push
-$ git push --tags // CI will publish to NPM
-```
+- update the version in `package.json` and commit to `master`
+- run `npm publish`
