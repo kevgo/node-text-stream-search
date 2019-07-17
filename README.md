@@ -1,11 +1,11 @@
 # Node.js Text Stream Search
 
-> Searches for occurrences of a given search term in a Node.js text stream
-
 [![Circle CI](https://circleci.com/gh/kevgo/node-text-stream-search.svg?style=shield)](https://circleci.com/gh/kevgo/node-text-stream-search)
+[![Code Coverage](https://coveralls.io/repos/github/kevgo/node-text-stream-search/badge.svg?branch=master)](https://coveralls.io/github/kevgo/node-text-stream-search?branch=master)
 
-Simple and robust way to scan text streams for text. This works with anything
-that emits `data` events with text in the form of Buffers or strings.
+This micro-library (no dependencies) searches for occurrences of a given search
+term (string or Regex) in a Node.js stream, i.e. anything that emits `data`
+events with Buffers or strings.
 
 ```javascript
 import StreamSearch from "text-stream-search"
@@ -16,8 +16,8 @@ const streamSearch = new TextStreamSearch(myStream)
 await streamSearch.waitForText("hello")
 
 // capture data from the stream
-const matching = await streamSearch.waitForRegex("listening at port \\d+")
-// matching contains something like "listening at port 3000"
+const matching = await streamSearch.waitForRegex("listening at port \\d+.")
+// matching contains something like "listening at port 3000."
 ```
 
 ## Related Projects
@@ -27,7 +27,7 @@ const matching = await streamSearch.waitForRegex("listening at port \\d+")
 
 ## Development
 
-### Run tests
+#### Run tests
 
 - run all tests: <code textrun="verify-make-command">make test</code>
 - run unit tests: <code textrun="verify-make-command">make unit</code>
@@ -36,7 +36,7 @@ const matching = await streamSearch.waitForRegex("listening at port \\d+")
 - see all available make commands: <code textrun="verify-make-command">make
   help</code>
 
-### Deploy a new version
+#### Deploy a new version
 
 - update the version in `package.json` and commit to `master`
 - run `npm publish`
