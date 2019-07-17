@@ -27,6 +27,11 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 
 ## Development
 
+All contributions and feedback, no matter how big or small, is welcome. Please
+submit bugs, ideas, or improvements via
+[an issue](https://github.com/kevgo/node-text-stream-accumulator/issues/new) or
+pull request.
+
 - run all tests: <code textrun="verify-make-command">make test</code>
 - run unit tests: <code textrun="verify-make-command">make unit</code>
 - run linters: <code textrun="verify-make-command">make lint</code>
