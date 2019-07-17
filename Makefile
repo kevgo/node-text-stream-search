@@ -14,9 +14,6 @@ build: clean    # builds for the current platform
 clean:   # removes all build artifacts
 	@rm -rf dist
 
-cuke: build   # runs the feature specs
-	@node_modules$/.bin$/cucumber-js
-
 deploy: build  # deploys a new version to npmjs.org
 	npm publish
 
@@ -40,7 +37,7 @@ setup:   # sets up the installation on this machine
 	node_modules$/o-tools$/bin$/check-paths
 	yarn install
 
-test: lint unit cuke docs   # runs all tests
+test: lint unit docs   # runs all tests
 .PHONY: test
 
 unit:   # runs the unit tests

@@ -14,12 +14,14 @@ in the form of Buffers or strings.
 import StreamSearch from "text-stream-search"
 
 const streamSearch = new TextStreamSearch(myStream)
+
+// wait until the stream contains "hello"
 await streamSearch.waitForText("hello")
+
+// capture data from the stream
 const matching = await streamSearch.waitForRegex("listening at port \\d+")
 // matching contains something like "listening at port 3000"
 ```
-
-More use cases are described [here](features/wait.feature).
 
 ## Related Projects
 

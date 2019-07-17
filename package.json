@@ -7,11 +7,9 @@
   "devDependencies": {
     "@types/chai": "4.1.7",
     "@types/chalk": "2.2.0",
-    "@types/cucumber": "4.0.6",
     "@types/delay": "3.1.0",
     "@types/mocha": "5.2.7",
     "chalk": "2.4.2",
-    "cucumber": "5.1.0",
     "delay": "4.3.0",
     "es6-promise-inspect": "2.0.0",
     "memory-streams": "0.1.3",
