@@ -1,4 +1,4 @@
-# Node.js Text Stream Search
+# Text Search in Node.JS Streams
 
 [![Circle CI](https://circleci.com/gh/kevgo/node-text-stream-search.svg?style=shield)](https://circleci.com/gh/kevgo/node-text-stream-search)
 [![Code Coverage](https://coveralls.io/repos/github/kevgo/node-text-stream-search/badge.svg?branch=master)](https://coveralls.io/github/kevgo/node-text-stream-search?branch=master)
@@ -8,16 +8,16 @@ term (string or Regex) in a Node.js stream, i.e. anything that emits `data`
 events with Buffers or strings.
 
 ```javascript
-import StreamSearch from "text-stream-search"
+import { StreamSearch } from "text-stream-search"
 
 const streamSearch = new TextStreamSearch(myStream)
 
-// wait until the stream contains "hello"
+// wait until myStream contains "hello"
 await streamSearch.waitForText("hello")
 
 // capture data from the stream
-const matching = await streamSearch.waitForRegex("listening at port \\d+.")
-// matching contains something like "listening at port 3000."
+const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
+// matchingText contains something like "listening at port 3000."
 ```
 
 ## related projects
