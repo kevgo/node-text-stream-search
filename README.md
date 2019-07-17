@@ -25,6 +25,13 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 - [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing
   with regular expressions, but is buggy and blocks the event queue
 
+## Feedback
+
+All feedback, no matter how big or small, is welcome. Please submit bugs, ideas,
+or improvements via
+[an issue](https://github.com/kevgo/node-text-stream-accumulator/issues/new) or
+pull request.
+
 ## Development
 
 - run all tests: <code textrun="verify-make-command">make test</code>
