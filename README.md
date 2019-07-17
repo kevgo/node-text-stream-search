@@ -20,12 +20,12 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 // matchingText contains something like "listening at port 3000."
 ```
 
-## related projects
+## Related projects
 
 - [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing
   with regular expressions, but is buggy and blocks the event queue
 
-## development
+## Development
 
 - run all tests: <code textrun="verify-make-command">make test</code>
 - run unit tests: <code textrun="verify-make-command">make unit</code>
@@ -34,7 +34,7 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 - see all available make commands: <code textrun="verify-make-command">make
   help</code>
 
-#### deploy a new version
+#### Deploy a new version
 
 - update the version in `package.json` and commit to `master`
 - run `npm publish`
