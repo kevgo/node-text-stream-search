@@ -38,8 +38,5 @@ const matching = await streamSearch.waitForRegex("listening at port \\d+")
 
 ### Deploy a new version
 
-```
-$ yarn version
-$ git push
-$ git push --tags // CI will publish to NPM
-```
+- update the version in `package.json` and commit to `master`
+- run `npm publish`
