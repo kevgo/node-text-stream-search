@@ -6,6 +6,6 @@ rules:
   no-implicit-dependencies: [true, "dev"]
   no-unused-variable: false
   only-arrow-functions: false
-  quotemark: [true, "double"]
+  quotemark: [true, "double", "avoid-escape"]
   semicolon: [true, "never"]
   trailing-comma: [false]
