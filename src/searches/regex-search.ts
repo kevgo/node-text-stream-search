@@ -31,7 +31,7 @@ export class RegexSearch {
     this.resolve = resolve
     this.reject = reject
     this.text = text
-    this.searchRegexp = regex
+    this.searchRegexp = new RegExp(regex)
     if (timeoutDuration != null) {
       this.timeoutDuration = timeoutDuration
       setTimeout(this.onTimeout.bind(this), timeoutDuration)
@@ -50,7 +50,7 @@ export class RegexSearch {
   private onTimeout() {
     this.reject(
       new Error(
-        `Regex /${this.searchRegexp}/ not found within ${
+        `Regex ${this.searchRegexp} not found within ${
           this.timeoutDuration
         } ms. The captured text so far is:\n${this.text.toString()}`
       )
