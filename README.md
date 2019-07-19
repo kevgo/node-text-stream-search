@@ -20,6 +20,9 @@ await streamSearch.waitForText("hello")
 // capture data from the stream
 const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 // matchingText contains something like "listening at port 3000."
+
+// access the captured stream content
+const text = streamSearch.fullText()
 ```
 
 ## Related projects

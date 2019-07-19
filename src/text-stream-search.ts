@@ -5,7 +5,7 @@ import { TextAccumulator } from "./text-accumulator"
 import { SimpleReadableStream } from "./types/simple-readable-stream"
 
 /**
- * TextStreamSearch finds occurrences of a given text or regular expression in a given text stream.
+ * TextStreamSearch searches ReadableStreams for text and regexes.
  */
 export class TextStreamSearch {
   /** the output captured so far */
@@ -23,8 +23,13 @@ export class TextStreamSearch {
     stream.on("data", this.onStreamData.bind(this))
   }
 
+  /** Fulltext returns the complete content captured from this stream so far. */
+  fullText(): string {
+    return this.streamText.toString()
+  }
+
   /**
-   * Returns a promise that resolves with the matching text
+   * WaitForText returns a promise that resolves with the matching text
    * when the given text shows up in the observed stream.
    * If a timeout is given, aborts after the given duration.
    */
@@ -38,7 +43,7 @@ export class TextStreamSearch {
   }
 
   /**
-   * Returns a promise that resolves with the matching text
+   * WaitForRegex returns a promise that resolves with the matching text
    * when the given RegExp shows up in observed stream.
    * If a timeout is given, aborts after the given duration.
    */
