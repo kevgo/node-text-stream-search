@@ -7,7 +7,6 @@
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "0.1.3",
     "@types/chai": "4.1.7",
-    "@types/delay": "3.1.0",
     "@types/mocha": "5.2.7",
     "coveralls": "3.0.5",
     "delay": "4.3.0",
