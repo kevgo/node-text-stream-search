@@ -45,4 +45,4 @@ test:  # runs all tests
 .PHONY: test
 
 unit:   # runs the unit tests
-	@node_modules/.bin/mocha --reporter dot
+	@node_modules/.bin/mocha --reporter dot test/*.ts
