@@ -2,20 +2,12 @@ import { strict as assert } from "assert"
 import { ReadableStream } from "memory-streams"
 import { TextStreamSearch } from "../src/text-stream-search"
 
-describe(".fullText()", function() {
-  beforeEach(function() {
-    this.stream = new ReadableStream("")
-    this.search = new TextStreamSearch(this.stream)
-  })
-
-  it("starts empty", function() {
-    assert.equal(this.search.fullText(), "")
-  })
-
-  it("contains the accumulated text from the stream", async function() {
-    this.stream.push("So I said ")
-    this.stream.push("hello ")
-    this.stream.push("to her")
-    assert.equal(this.search.fullText(), "So I said hello to her")
-  })
+test("TextStreamSearch.fullText()", function() {
+  const stream = new ReadableStream("")
+  const search = new TextStreamSearch(stream)
+  assert.equal(search.fullText(), "", "should start out empty")
+  stream.push("So I said ")
+  stream.push("hello ")
+  stream.push("to her")
+  assert.equal(search.fullText(), "So I said hello to her")
 })
