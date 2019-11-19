@@ -41,6 +41,7 @@ test:  # runs all tests
 	@node_modules$/.bin$/tsc --noEmit &
 	@node_modules$/.bin$/tslint --project . &
 	@node_modules/.bin/prettier -l "src/**/*.ts" &
+	@node_modules/.bin/prettier -l "test/**/*.ts" &
 	@node_modules/.bin/prettier -l "**/*.md" &
 	@node_modules$/.bin$/text-run --offline --format dot &
 	@node_modules/.bin/mocha --reporter dot
