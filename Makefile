@@ -44,7 +44,7 @@ test:  # runs all tests
 	@node_modules/.bin/prettier -l "test/**/*.ts" &
 	@node_modules/.bin/prettier -l "**/*.md" &
 	@node_modules$/.bin$/text-run --offline --format dot &
-	@node_modules/.bin/mocha --reporter dot
+	@node_modules/.bin/mocha --reporter dot test/*.ts
 .PHONY: test
 
 unit:   # runs the unit tests
