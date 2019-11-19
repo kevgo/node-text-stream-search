@@ -24,6 +24,7 @@ docs: build   # runs the documentation tests
 fix:  # fixes the fixable issues in the code base
 	tslint --project tsconfig.json --fix
 	prettier --write src/*.ts
+	prettier --write test/*.ts
 	prettier --write **/*.md
 
 help:   # prints all make targets
@@ -33,6 +34,7 @@ lint:   # lints all files
 	node_modules$/.bin$/tsc --noEmit
 	node_modules$/.bin$/tslint --project .
 	node_modules/.bin/prettier -l "src/**/*.ts"
+	node_modules/.bin/prettier -l "test/**/*.ts"
 	node_modules/.bin/prettier -l "**/*.md"
 
 test:  # runs all tests
