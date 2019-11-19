@@ -33,12 +33,7 @@ test("match has already arrived when the search starts", async function() {
 test("aborting after the given timeout", async function() {
   const stream = new ReadableStream("")
   const promise = new TextStreamSearch(stream).waitForRegex(/h.*o/, 10)
-  assert.rejects(
-    promise,
-    new Error(
-      "Regex /h.*o/ not found within 10 ms. The captured text so far is:\n"
-    )
-  )
+  assert.rejects(promise, new Error("Regex /h.*o/ not found within 10 ms. The captured text so far is:\n"))
 })
 
 test("search without timeout", async function() {
