@@ -35,9 +35,7 @@ export class TextStreamSearch {
    */
   waitForText(text: string, timeout?: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.searchList.push(
-        new StringSearch(text, resolve, reject, this.streamText, timeout)
-      )
+      this.searchList.push(new StringSearch(text, resolve, reject, this.streamText, timeout))
       this.searchList.scan()
     })
   }
@@ -49,9 +47,7 @@ export class TextStreamSearch {
    */
   waitForRegex(regex: RegExp, timeout?: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.searchList.push(
-        new RegexSearch(regex, resolve, reject, this.streamText, timeout)
-      )
+      this.searchList.push(new RegexSearch(regex, resolve, reject, this.streamText, timeout))
       this.searchList.scan()
     })
   }
