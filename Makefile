@@ -15,7 +15,7 @@ clean:   # removes all build artifacts
 	@rm -rf dist
 
 coverage:  # measures test coverage
-	@node_modules/.bin/nyc node_modules/.bin/mocha --require source-map-support/register
+	@node_modules/.bin/nyc node_modules/.bin/mocha --require source-map-support/register test/*.ts
 	@node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls
 
 docs: build   # runs the documentation tests
