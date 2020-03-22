@@ -5,7 +5,7 @@ import { TextStreamSearch } from "../src/text-stream-search"
 
 suite("TextStreamSearch.waitForText()")
 
-test("match inside a block of text", async function() {
+test("match inside a block of text", async function () {
   const stream = new ReadableStream("")
   const promise = new TextStreamSearch(stream).waitForText("hello")
   stream.push("So I said hello to her")
@@ -13,7 +13,7 @@ test("match inside a block of text", async function() {
   assert.equal(matched, "hello")
 })
 
-test("matches arrives in several blocks of text", async function() {
+test("matches arrives in several blocks of text", async function () {
   const stream = new ReadableStream("")
   const promise = new TextStreamSearch(stream).waitForText("wonderland")
   stream.push("won")
@@ -23,41 +23,41 @@ test("matches arrives in several blocks of text", async function() {
   assert.equal(matched, "wonderland")
 })
 
-test("match has already arrived when the search starts", async function() {
+test("match has already arrived when the search starts", async function () {
   const stream = new ReadableStream("")
   stream.push("So I said hello to her")
   const matched = await new TextStreamSearch(stream).waitForText("hello")
   assert.equal(matched, "hello")
 })
 
-test("the given timeout expires", async function() {
+test("the given timeout expires", async function () {
   const stream = new ReadableStream("")
   const promise = new TextStreamSearch(stream).waitForText("hello", 10)
   assert.rejects(promise, new Error('Text "hello" not found within 10 ms. The captured text so far is:\n'))
 })
 
-test("search without timeout", async function() {
+test("search without timeout", async function () {
   const stream = new ReadableStream("")
   const promise = new TextStreamSearch(stream).waitForText("hello")
   let resolved = false
-  promise.then(function() {
+  promise.then(function () {
     resolved = true
   })
   await delay(10)
   assert.equal(resolved, false)
 })
 
-test("multiple concurrent searches", async function() {
+test("multiple concurrent searches", async function () {
   const stream = new ReadableStream("")
   const search = new TextStreamSearch(stream)
   const promise1 = search.waitForText("text1")
   let resolved1 = false
-  promise1.then(function() {
+  promise1.then(function () {
     resolved1 = true
   })
   const promise2 = search.waitForText("text2")
   let resolved2 = false
-  promise2.then(function() {
+  promise2.then(function () {
     resolved2 = true
   })
   stream.push("text1")
@@ -69,12 +69,12 @@ test("multiple concurrent searches", async function() {
   assert.equal(resolved2, true, "promise2 should have resolved")
 })
 
-test("multiple sequential searches", async function() {
+test("multiple sequential searches", async function () {
   const stream = new ReadableStream("")
   const search = new TextStreamSearch(stream)
   const promise1 = search.waitForText("text1")
   let resolved1 = false
-  promise1.then(function() {
+  promise1.then(function () {
     resolved1 = true
   })
   stream.push("text1")
@@ -83,7 +83,7 @@ test("multiple sequential searches", async function() {
 
   const promise2 = search.waitForText("text2")
   let resolved2 = false
-  promise2.then(function() {
+  promise2.then(function () {
     resolved2 = true
   })
   stream.push("text2")

@@ -23,8 +23,8 @@ docs: build   # runs the documentation tests
 
 fix:  # fixes the fixable issues in the code base
 	tslint --project tsconfig.json --fix
-	prettier --write src/*.ts
-	prettier --write test/*.ts
+	prettier --write src/
+	prettier --write test/
 	prettier --write **/*.md
 
 help:   # prints all make targets
