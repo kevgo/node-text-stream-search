@@ -11,7 +11,7 @@
     "coveralls": "3.0.11",
     "delay": "4.3.0",
     "memory-streams": "0.1.3",
-    "mocha": "7.1.1",
+    "mocha": "7.1.2",
     "nyc": "15.0.0",
     "prettier": "2.0.2",
     "source-map-support": "0.5.16",
