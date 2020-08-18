@@ -1,7 +1,8 @@
 import { strict as assert } from "assert"
-import delay from "delay"
 import { ReadableStream } from "memory-streams"
 import { TextStreamSearch } from "../src/text-stream-search"
+import * as util from "util"
+const delay = util.promisify(setTimeout)
 
 suite("TextStreamSearch.waitForText()")
 
