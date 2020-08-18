@@ -1,6 +1,6 @@
 {
   "name": "text-stream-search",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "author": "Kevin Goslar",
   "dependencies": {},
   "description": "Searches for occurrences of a given search term in Node.js text streams",
