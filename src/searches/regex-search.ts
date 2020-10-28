@@ -50,8 +50,8 @@ export class RegexSearch {
   private onTimeout() {
     this.reject(
       new Error(
-        `Regex ${this.searchRegexp} not found within ${
-          this.timeoutDuration
+        `Regex ${this.searchRegexp.toString()} not found within ${
+          this.timeoutDuration ?? -1
         } ms. The captured text so far is:\n${this.text.toString()}`
       )
     )
