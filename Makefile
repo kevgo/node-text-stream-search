@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := spec
+.DEFAULT_GOAL := test
 
 # platform-specificity
 ifdef ComSpec
