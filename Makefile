@@ -14,7 +14,7 @@ docs: build   # runs the documentation tests
 	${CURDIR}/node_modules/.bin/text-run --offline --format dot
 
 fix:  # fixes the fixable issues in the code base
-	${CURDIR}/node_modules/.bin/eslint . --ext .ts --fix
+	${CURDIR}/node_modules/.bin/eslint --ext .ts --fix .
 	${CURDIR}/node_modules/.bin/prettier --write src/
 	${CURDIR}/node_modules/.bin/prettier --write test/
 	${CURDIR}/node_modules/.bin/prettier --write **/*.md
