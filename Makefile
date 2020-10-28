@@ -24,7 +24,7 @@ help:   # prints all make targets
 
 lint:   # lints all files
 	${CURDIR}/node_modules/.bin/tsc --noEmit
-	${CURDIR}/node_modules/.bin/eslint --ext .ts .
+	${CURDIR}/node_modules/.bin/eslint --ext=.ts .
 	${CURDIR}/node_modules/.bin/prettier -l "src/**/*.ts"
 	${CURDIR}/node_modules/.bin/prettier -l "test/**/*.ts"
 	${CURDIR}/node_modules/.bin/prettier -l "**/*.md"
