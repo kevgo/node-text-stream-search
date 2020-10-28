@@ -14,8 +14,8 @@ docs: build   # runs the documentation tests
 	${CURDIR}/node_modules/.bin/text-run --offline --format dot
 
 fix:  # fixes the fixable issues in the code base
+	${CURDIR}/node_modules/.bin/prettier --write . &
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts --fix .
-	${CURDIR}/node_modules/.bin/prettier --write .
 
 help:   # prints all make targets
 	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
