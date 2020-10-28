@@ -42,7 +42,7 @@ test("search without timeout", async function () {
   const stream = new ReadableStream("")
   const promise = new TextStreamSearch(stream).waitForRegex(/h.*o/)
   let resolved = false
-  await promise.then(function () {
+  void promise.then(function () {
     resolved = true
   })
   await delay(10)
@@ -54,12 +54,12 @@ test("multiple concurrent searches", async function () {
   const search = new TextStreamSearch(stream)
   const promise1 = search.waitForRegex(/t.*1/)
   let resolved1 = false
-  await promise1.then(function () {
+  void promise1.then(function () {
     resolved1 = true
   })
   const promise2 = search.waitForRegex(/t.*2/)
   let resolved2 = false
-  await promise2.then(function () {
+  void promise2.then(function () {
     resolved2 = true
   })
   stream.push("text1")
@@ -76,7 +76,7 @@ test("multiple sequential searches", async function () {
   const search = new TextStreamSearch(stream)
   const promise1 = search.waitForRegex(/t.*1/)
   let resolved1 = false
-  await promise1.then(function () {
+  void promise1.then(function () {
     resolved1 = true
   })
   stream.push("text1")
@@ -85,7 +85,7 @@ test("multiple sequential searches", async function () {
 
   const promise2 = search.waitForRegex(/t.*2/)
   let resolved2 = false
-  await promise2.then(function () {
+  void promise2.then(function () {
     resolved2 = true
   })
   stream.push("text2")
