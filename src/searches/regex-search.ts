@@ -39,8 +39,8 @@ export class RegexSearch {
   }
 
   /** Scan checks the stream text for occurrences of the searchRegexp. */
-  scan() {
-    const matches = this.text.toString().match(this.searchRegexp)
+  scan(): void {
+    const matches = this.searchRegexp.exec(this.text.toString())
     if (matches) {
       this.resolve(matches[0])
     }

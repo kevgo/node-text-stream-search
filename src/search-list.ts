@@ -7,7 +7,7 @@ export class SearchList extends Array<Search> {
   /**
    * Scan runs all active searches against the stream text that has accumulated so far.
    */
-  scan() {
+  scan(): void {
     for (const search of this) {
       search.scan()
     }
