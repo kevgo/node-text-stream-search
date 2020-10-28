@@ -21,9 +21,9 @@ help:   # prints all make targets
 	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
 
 lint:   # lints all files
+	${CURDIR}/node_modules/.bin/eslint --ext=.ts . &
+	${CURDIR}/node_modules/.bin/prettier -l . &
 	${CURDIR}/node_modules/.bin/tsc --noEmit
-	${CURDIR}/node_modules/.bin/eslint --ext=.ts .
-	${CURDIR}/node_modules/.bin/prettier -l .
 
 test:  # runs all tests
 	${CURDIR}/node_modules/.bin/tsc --noEmit &
