@@ -45,7 +45,7 @@ export class StringSearch {
    * Checks the given text for the searchText.
    * Calls the resolve function when it finds it.
    */
-  scan() {
+  scan(): void {
     if (this.text.toString().includes(this.searchText)) {
       this.resolve(this.searchText)
     }
@@ -56,7 +56,7 @@ export class StringSearch {
     this.reject(
       new Error(
         `Text "${this.searchText}" not found within ${
-          this.timeoutDuration
+          this.timeoutDuration ?? -1
         } ms. The captured text so far is:\n${this.text.toString()}`
       )
     )

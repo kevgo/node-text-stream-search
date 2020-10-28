@@ -39,8 +39,8 @@ export class RegexSearch {
   }
 
   /** Scan checks the stream text for occurrences of the searchRegexp. */
-  scan() {
-    const matches = this.text.toString().match(this.searchRegexp)
+  scan(): void {
+    const matches = this.searchRegexp.exec(this.text.toString())
     if (matches) {
       this.resolve(matches[0])
     }
@@ -50,8 +50,8 @@ export class RegexSearch {
   private onTimeout() {
     this.reject(
       new Error(
-        `Regex ${this.searchRegexp} not found within ${
-          this.timeoutDuration
+        `Regex ${this.searchRegexp.toString()} not found within ${
+          this.timeoutDuration ?? -1
         } ms. The captured text so far is:\n${this.text.toString()}`
       )
     )

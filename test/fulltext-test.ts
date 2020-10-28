@@ -1,5 +1,6 @@
 import { strict as assert } from "assert"
 import { ReadableStream } from "memory-streams"
+
 import { TextStreamSearch } from "../src/text-stream-search"
 
 test("TextStreamSearch.fullText()", function () {
