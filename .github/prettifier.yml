@@ -1,0 +1,3 @@
+commentTemplate: >
+  Thanks for your contribution and welcome to this project! We format our source code using
+  [Prettier](https://prettier.io). I have adjusted the formatting of this pull request for you.
