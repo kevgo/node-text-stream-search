@@ -4,7 +4,7 @@ const path = require("path")
 const util = require("util")
 const readFile = util.promisify(fs.readFile)
 
-module.exports = async function(args) {
+module.exports = async function (args) {
   const expected = args.nodes
     .text()
     .replace(/make\s*/, "")
@@ -12,10 +12,7 @@ module.exports = async function(args) {
   args.name(`verify Make command "${expected}" exists`)
   const makefilePath = path.join(args.configuration.sourceDir, "Makefile")
   const makefileContent = await readFile(makefilePath, "utf8")
-  const commands = makefileContent
-    .split(os.EOL)
-    .filter(lineDefinesMakeCommand)
-    .map(extractMakeCommand)
+  const commands = makefileContent.split(os.EOL).filter(lineDefinesMakeCommand).map(extractMakeCommand)
   if (!commands.includes(expected)) {
     throw new Error(`Make command "${expected}" not found in: ${commands}`)
   }
