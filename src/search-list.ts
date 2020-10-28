@@ -2,12 +2,6 @@ import { Search } from "./types/search"
 
 console.log(111111)
 
-
-
-
-
-
-
 /**
  * SearchList contains all current searches.
  */
