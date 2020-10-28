@@ -31,7 +31,7 @@ lint:   # lints all files
 
 test:  # runs all tests
 	${CURDIR}/node_modules/.bin/tsc --noEmit &
-	${CURDIR}/node_modules/.bin/eslint -c .eslintrc.json --ext .ts .
+	${CURDIR}/node_modules/.bin/eslint --ext .ts . &
 	${CURDIR}/node_modules/.bin/prettier -l "src/**/*.ts" &
 	${CURDIR}/node_modules/.bin/prettier -l "test/**/*.ts" &
 	${CURDIR}/node_modules/.bin/prettier -l "**/*.md" &
