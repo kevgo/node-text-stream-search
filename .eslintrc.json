@@ -9,7 +9,8 @@
     "plugin:typescript-sort-keys/recommended"
   ],
   "rules": {
-    "simple-import-sort/sort": "error"
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
   "parserOptions": {
     "project": "./tsconfig.json"
