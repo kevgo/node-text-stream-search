@@ -24,11 +24,12 @@ lint:   # lints all files
 	${CURDIR}/node_modules/.bin/tsc --noEmit
 
 test:  # runs all tests
-	${CURDIR}/node_modules/.bin/tsc --noEmit &
-	${CURDIR}/node_modules/.bin/eslint --ext .ts . &
-	${CURDIR}/node_modules/.bin/prettier -l . &
-	${CURDIR}/node_modules/.bin/text-run --offline --format=dot &
-	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
+	${CURDIR}/node_modules/.bin/tsc --noEmit & \
+	${CURDIR}/node_modules/.bin/eslint --ext .ts . & \
+	${CURDIR}/node_modules/.bin/prettier -l . & \
+	${CURDIR}/node_modules/.bin/text-run --offline --format=dot & \
+	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts & \
+	wait
 .PHONY: test
 
 unit:   # runs the unit tests
