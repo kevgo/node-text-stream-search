@@ -1,5 +1,3 @@
-.DEFAULT_GOAL := test
-
 build: clean    # builds for the current platform
 	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
 
@@ -18,7 +16,7 @@ fix:  # fixes the fixable issues in the code base
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts --fix .
 
 help:   # prints all make targets
-	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
+	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v '.SILENT:' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
 
 lint:   # lints all files
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts . &
@@ -37,3 +35,4 @@ unit:   # runs the unit tests
 	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
 
 .SILENT:
+.DEFAULT_GOAL := help
