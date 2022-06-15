@@ -14,6 +14,7 @@ docs: build   # runs the documentation tests
 fix:  # fixes the fixable issues in the code base
 	${CURDIR}/node_modules/.bin/prettier --write . &
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts --fix .
+	${CURDIR}/node_modules/.bin/sort-package-json
 
 help:   # prints all make targets
 	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v '.SILENT:' | grep -v help | sed 's/:.*#/#/' | column -s "#" -t
@@ -22,6 +23,7 @@ lint:   # lints all files
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts . &
 	${CURDIR}/node_modules/.bin/prettier -l . &
 	${CURDIR}/node_modules/.bin/tsc --noEmit
+	${CURDIR}/node_modules/.bin/sort-package-json --check
 
 test:  # runs all tests
 	${CURDIR}/node_modules/.bin/tsc --noEmit & \
@@ -29,6 +31,7 @@ test:  # runs all tests
 	${CURDIR}/node_modules/.bin/prettier -l . & \
 	${CURDIR}/node_modules/.bin/text-run --offline --format=dot & \
 	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts & \
+	${CURDIR}/node_modules/.bin/sort-package-json --check & \
 	wait
 .PHONY: test
 

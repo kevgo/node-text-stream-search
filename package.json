@@ -1,9 +1,23 @@
 {
   "name": "text-stream-search",
   "version": "4.0.3",
-  "author": "Kevin Goslar",
-  "dependencies": {},
   "description": "Searches for occurrences of a given search term in Node.js text streams",
+  "homepage": "https://github.com/Originate/node-text-stream-search#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
+  },
+  "license": "ISC",
+  "author": "Kevin Goslar",
+  "main": "dist/text-stream-search.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepublishOnly": "make build",
+    "test": "make spec"
+  },
+  "dependencies": {},
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/chai": "4.3.0",
@@ -19,24 +33,11 @@
     "mocha": "9.2.0",
     "nyc": "15.1.0",
     "prettier": "2.5.1",
+    "sort-package-json": "1.57.0",
     "source-map-support": "0.5.21",
     "text-runner": "5.0.1",
     "textrun-make": "0.1.1",
     "ts-node": "10.5.0",
     "typescript": "4.5.5"
-  },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/Originate/node-text-stream-search#readme",
-  "license": "ISC",
-  "main": "dist/text-stream-search.js",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
-  },
-  "scripts": {
-    "prepublishOnly": "make build",
-    "test": "make spec"
   }
 }
