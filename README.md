@@ -33,8 +33,7 @@ const text = streamSearch.fullText()
 
 ## Development
 
-All contributions and feedback, no matter how big or small, is welcome. Please
-submit bugs, ideas, or improvements via
+Please submit bugs, ideas, or improvements via
 [an issue](https://github.com/kevgo/node-text-stream-accumulator/issues/new) or
 pull request.
 
