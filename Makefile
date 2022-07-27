@@ -31,5 +31,9 @@ test: lint unit docs   # runs all tests
 unit:   # runs the unit tests
 	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
 
+update:  # update dependencies
+	yarn upgrade --latest
+
+
 .SILENT:
 .DEFAULT_GOAL := help
