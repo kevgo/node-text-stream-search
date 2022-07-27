@@ -1,17 +1,16 @@
-const fs = require("fs")
-const os = require("os")
-const path = require("path")
-const util = require("util")
-const readFile = util.promisify(fs.readFile)
+import { promises as fs } from "fs"
+import * as os from "os"
+import * as path from "path"
+import * as tr from "text-runner"
 
-module.exports = async function (args) {
-  const expected = args.nodes
+export default async function (args: tr.actions.Args) {
+  const expected = args.region
     .text()
     .replace(/make\s*/, "")
     .trim()
   args.name(`verify Make command "${expected}" exists`)
-  const makefilePath = path.join(args.configuration.sourceDir, "Makefile")
-  const makefileContent = await readFile(makefilePath, "utf8")
+  const makefilePath = path.join(args.configuration.sourceDir.value, "Makefile")
+  const makefileContent = await fs.readFile(makefilePath, "utf8")
   const commands = makefileContent.split(os.EOL).filter(lineDefinesMakeCommand).map(extractMakeCommand)
   if (!commands.includes(expected)) {
     throw new Error(`Make command "${expected}" not found in: ${commands}`)
@@ -20,13 +19,13 @@ module.exports = async function (args) {
 
 // returns whether the given line from a Makefile
 // defines a Make command
-function lineDefinesMakeCommand(line) {
+function lineDefinesMakeCommand(line: string) {
   return makeCommandRE.test(line)
 }
 const makeCommandRE = /^[^ ]+:/
 
 // returns the defined command name
 // from a Makefile line that defines a Make command
-function extractMakeCommand(line) {
+function extractMakeCommand(line: string) {
   return line.split(":")[0]
 }
