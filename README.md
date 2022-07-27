@@ -1,6 +1,6 @@
 # Text Search in Node.JS Streams
 
-[![Circle CI](https://circleci.com/gh/kevgo/node-text-stream-search.svg?style=shield)](https://circleci.com/gh/kevgo/node-text-stream-search)
+[![CI](https://github.com/kevgo/node-text-stream-search/actions/workflows/test.yml/badge.svg)](https://github.com/kevgo/node-text-stream-search/actions/workflows/test.yml)
 [![Code Coverage](https://coveralls.io/repos/github/kevgo/node-text-stream-search/badge.svg?branch=master)](https://coveralls.io/github/kevgo/node-text-stream-search?branch=master)
 [![0 dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://github.com/kevgo/node-text-stream-search/blob/master/package.json)
 [![install size](https://packagephobia.now.sh/badge?p=text-stream-search)](https://packagephobia.now.sh/result?p=text-stream-search)
