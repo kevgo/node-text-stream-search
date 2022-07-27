@@ -21,7 +21,7 @@ help:   # prints all make targets
 
 lint:   # lints all files
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts .
-	${CURDIR}/node_modules/.bin/prettier -l .
+	${CURDIR}/node_modules/.bin/prettier --check .
 	${CURDIR}/node_modules/.bin/tsc --noEmit
 	${CURDIR}/node_modules/.bin/sort-package-json --check
 
@@ -30,6 +30,10 @@ test: lint unit docs   # runs all tests
 
 unit:   # runs the unit tests
 	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
+
+update:  # update dependencies
+	yarn upgrade --latest
+
 
 .SILENT:
 .DEFAULT_GOAL := help
