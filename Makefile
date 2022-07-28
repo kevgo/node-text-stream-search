@@ -1,12 +1,12 @@
-build: node_modules clean    # builds for the current platform
-	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
-
 clean:   # removes all build artifacts
 	rm -rf dist
 
 coverage: node_modules  # measures test coverage
 	${CURDIR}/node_modules/.bin/nyc node_modules/.bin/mocha --require source-map-support/register test/*.ts
 	${CURDIR}/node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls
+
+dist: node_modules
+	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
 
 docs: node_modules build   # runs the documentation tests
 	${CURDIR}/node_modules/.bin/text-run --offline --format=dot
@@ -23,7 +23,7 @@ lint: node_modules  # lints all files
 	${CURDIR}/node_modules/.bin/prettier --check .
 	${CURDIR}/node_modules/.bin/tsc --noEmit
 
-node_modules: package.json
+node_modules: package.json yarn.lock
 	yarn
 
 test: node_modules lint unit docs   # runs all tests
