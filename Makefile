@@ -1,3 +1,6 @@
+build: clean    # builds for the current platform
+	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
+
 clean:   # removes all build artifacts
 	rm -rf dist
 
