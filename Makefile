@@ -1,4 +1,4 @@
-build: clean    # builds for the current platform
+build: clean    # builds the codebase
 	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
 
 clean:   # removes all build artifacts
@@ -16,7 +16,7 @@ fix: node_modules  # fixes the fixable issues in the code base
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts --fix .
 
 help:   # prints all make targets
-	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v '.SILENT:' | grep -v help | grep '#' | sed 's/:.*#/#/' | column -s "#" -t
+	@cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v '.SILENT:' | grep -v help | grep '#' | sed 's/:.*#/#/' | column -s "#" -t
 
 lint: node_modules tools/actionlint  # lints all files
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts .
