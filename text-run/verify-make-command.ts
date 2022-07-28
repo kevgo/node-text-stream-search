@@ -18,15 +18,13 @@ export default async function (args: tr.actions.Args) {
   }
 }
 
-// returns whether the given line from a Makefile
-// defines a Make command
+// indicates whether the given line from a Makefile defines a Make command
 function lineDefinesMakeCommand(line: string): boolean {
   return makeCommandRE.test(line)
 }
 const makeCommandRE = /^[^ ]+:/
 
-// returns the defined command name
-// from a Makefile line that defines a Make command
+// provides the name of the target from a Makefile line that defines a Make command
 function extractMakeCommand(line: string): string {
   const result = line.split(":")[0]
   if (result == null) {
