@@ -28,5 +28,9 @@ const makeCommandRE = /^[^ ]+:/
 // returns the defined command name
 // from a Makefile line that defines a Make command
 function extractMakeCommand(line: string): string {
-  return line.split(":")[0]
+  const result = line.split(":")[0]
+  if (result == null) {
+    throw new Error(`Makefile line "${line}" does not contain a ":" character`)
+  }
+  return result
 }
