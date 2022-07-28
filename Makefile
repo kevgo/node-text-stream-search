@@ -36,5 +36,4 @@ update:  # update dependencies
 	yarn upgrade --latest
 
 
-.SILENT:
 .DEFAULT_GOAL := help
