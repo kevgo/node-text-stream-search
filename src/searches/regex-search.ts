@@ -42,7 +42,11 @@ export class RegexSearch {
   scan(): void {
     const matches = this.searchRegexp.exec(this.text.toString())
     if (matches) {
-      this.resolve(matches[0])
+      const match = matches[0]
+      if (match == null) {
+        throw new Error(`Regex "{this.regex}" does not contain a capture group`)
+      }
+      this.resolve(match)
     }
   }
 
