@@ -1,8 +1,8 @@
 import { promises as fs } from "fs"
 import * as os from "os"
 import * as path from "path"
-import * as tr from "text-runner"
 import * as util from "util"
+import * as tr from "text-runner"
 
 export default async function (args: tr.actions.Args) {
   const expected = args.region
