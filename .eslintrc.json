@@ -1,16 +1,18 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "typescript-sort-keys", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "typescript-sort-keys"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:typescript-sort-keys/recommended"
+    "plugin:typescript-sort-keys/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "prettier"
   ],
   "rules": {
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "import/order": ["error", { "alphabetize": { "order": "asc" } }]
   },
   "parserOptions": {
     "project": "./tsconfig.json"

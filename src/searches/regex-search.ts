@@ -1,6 +1,6 @@
-import { TextAccumulator } from "../text-accumulator.js"
-import { RejectFunction } from "../types/reject-function.js"
-import { ResolveFunction } from "../types/resolve-function.js"
+import { TextAccumulator } from "../text-accumulator"
+import { RejectFunction } from "../types/reject-function"
+import { ResolveFunction } from "../types/resolve-function"
 
 /**
  * RegexSearch looks for the given regex in the text stream.
