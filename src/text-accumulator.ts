@@ -4,7 +4,7 @@
  */
 export class TextAccumulator extends Array<string> {
   /** ToString returns the currently accumulated text. */
-  toString(): string {
+  override toString(): string {
     return this.join("")
   }
 }

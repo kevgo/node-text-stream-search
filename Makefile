@@ -14,7 +14,6 @@ docs: node_modules build   # runs the documentation tests
 fix: node_modules  # fixes the fixable issues in the code base
 	${CURDIR}/node_modules/.bin/prettier --write .
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts --fix .
-	${CURDIR}/node_modules/.bin/sort-package-json
 
 help:   # prints all make targets
 	cat Makefile | grep '^[^ ]*:' | grep -v '.PHONY' | grep -v '.SILENT:' | grep -v help | grep '#' | sed 's/:.*#/#/' | column -s "#" -t
@@ -23,7 +22,6 @@ lint: node_modules  # lints all files
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts .
 	${CURDIR}/node_modules/.bin/prettier --check .
 	${CURDIR}/node_modules/.bin/tsc --noEmit
-	${CURDIR}/node_modules/.bin/sort-package-json --check
 
 node_modules: package.json
 	yarn
