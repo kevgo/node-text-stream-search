@@ -8,9 +8,6 @@ coverage: node_modules  # measures test coverage
 	${CURDIR}/node_modules/.bin/nyc node_modules/.bin/mocha --require source-map-support/register test/*.ts
 	${CURDIR}/node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls
 
-dist: node_modules
-	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
-
 docs: node_modules build   # runs the documentation tests
 	${CURDIR}/node_modules/.bin/text-run --offline --format=dot
 
