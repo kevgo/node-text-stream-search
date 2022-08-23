@@ -1,5 +1,5 @@
 import { strict as assert } from "assert"
-import { TextAccumulator } from "../src/text-accumulator"
+import { TextAccumulator } from "../src/text-accumulator.js"
 
 test("TextAccumulator", function () {
   const accumulator = new TextAccumulator()

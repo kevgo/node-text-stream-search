@@ -1,62 +1,62 @@
 import { strict as assert } from "assert"
 import * as util from "util"
 import { ReadableStream } from "memory-streams"
-import { TextStreamSearch } from "../src/text-stream-search"
+import { TextStreamSearch } from "../src/text-stream-search.js"
 const delay = util.promisify(setTimeout)
 
-suite("TextStreamSearch.waitForText()")
+suite("TextStreamSearch.waitForRegex()")
 
 test("match inside a block of text", async function () {
   const stream = new ReadableStream("")
-  const promise = new TextStreamSearch(stream).waitForText("hello")
+  const promise = new TextStreamSearch(stream).waitForRegex(/h.*o/)
   stream.push("So I said hello to her")
   const matched = await promise
-  assert.equal(matched, "hello")
+  assert.equal("hello to", matched)
 })
 
-test("matches arrives in several blocks of text", async function () {
+test("match arrives in several blocks of text", async function () {
   const stream = new ReadableStream("")
-  const promise = new TextStreamSearch(stream).waitForText("wonderland")
-  stream.push("won")
-  stream.push("der")
-  stream.push("land")
+  const promise = new TextStreamSearch(stream).waitForRegex(/w.*r/)
+  stream.push("wo")
+  stream.push("nd")
+  stream.push("er")
   const matched = await promise
-  assert.equal(matched, "wonderland")
+  assert.equal("wonder", matched)
 })
 
 test("match has already arrived when the search starts", async function () {
   const stream = new ReadableStream("")
   stream.push("So I said hello to her")
-  const matched = await new TextStreamSearch(stream).waitForText("hello")
-  assert.equal(matched, "hello")
+  const matched = await new TextStreamSearch(stream).waitForRegex(/h.*o/)
+  assert.equal("hello to", matched)
 })
 
-test("the given timeout expires", async function () {
+test("aborting after the given timeout", async function () {
   const stream = new ReadableStream("")
-  const promise = new TextStreamSearch(stream).waitForText("hello", 10)
-  await assert.rejects(promise, new Error('Text "hello" not found within 10 ms. The captured text so far is:\n'))
+  const promise = new TextStreamSearch(stream).waitForRegex(/h.*o/, 10)
+  await assert.rejects(promise, new Error("Regex /h.*o/ not found within 10 ms. The captured text so far is:\n"))
 })
 
 test("search without timeout", async function () {
   const stream = new ReadableStream("")
-  const promise = new TextStreamSearch(stream).waitForText("hello")
+  const promise = new TextStreamSearch(stream).waitForRegex(/h.*o/)
   let resolved = false
   void promise.then(function () {
     resolved = true
   })
   await delay(10)
-  assert.equal(resolved, false)
+  assert.equal(resolved, false, "should keep searching if not timeout given")
 })
 
 test("multiple concurrent searches", async function () {
   const stream = new ReadableStream("")
   const search = new TextStreamSearch(stream)
-  const promise1 = search.waitForText("text1")
+  const promise1 = search.waitForRegex(/t.*1/)
   let resolved1 = false
   void promise1.then(function () {
     resolved1 = true
   })
-  const promise2 = search.waitForText("text2")
+  const promise2 = search.waitForRegex(/t.*2/)
   let resolved2 = false
   void promise2.then(function () {
     resolved2 = true
@@ -73,7 +73,7 @@ test("multiple concurrent searches", async function () {
 test("multiple sequential searches", async function () {
   const stream = new ReadableStream("")
   const search = new TextStreamSearch(stream)
-  const promise1 = search.waitForText("text1")
+  const promise1 = search.waitForRegex(/t.*1/)
   let resolved1 = false
   void promise1.then(function () {
     resolved1 = true
@@ -82,7 +82,7 @@ test("multiple sequential searches", async function () {
   await delay(0) // process event queue
   assert.equal(resolved1, true, "promise1 should have resolved")
 
-  const promise2 = search.waitForText("text2")
+  const promise2 = search.waitForRegex(/t.*2/)
   let resolved2 = false
   void promise2.then(function () {
     resolved2 = true
