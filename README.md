@@ -1,8 +1,8 @@
 # Text Search in Node.JS Streams
 
 [![tests](https://github.com/kevgo/node-text-stream-search/actions/workflows/test.yml/badge.svg)](https://github.com/kevgo/node-text-stream-search/actions/workflows/test.yml)
-[![Code Coverage](https://coveralls.io/repos/github/kevgo/node-text-stream-search/badge.svg?branch=master)](https://coveralls.io/github/kevgo/node-text-stream-search?branch=master)
-[![0 dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://github.com/kevgo/node-text-stream-search/blob/master/package.json)
+[![Code Coverage](https://coveralls.io/repos/github/kevgo/node-text-stream-search/badge.svg?branch=main)](https://coveralls.io/github/kevgo/node-text-stream-search?branch=main)
+[![0 dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://github.com/kevgo/node-text-stream-search/blob/main/package.json)
 [![install size](https://packagephobia.now.sh/badge?p=text-stream-search)](https://packagephobia.now.sh/result?p=text-stream-search)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/kevgo/node-text-stream-search.svg)](https://lgtm.com/projects/g/kevgo/node-text-stream-search/context:javascript)
 
@@ -45,5 +45,5 @@ pull request.
 
 #### Deploy a new version
 
-- update the version in `package.json` and commit to `master`
+- update the version in `package.json` and commit to `main`
 - run `npm publish`
