@@ -39,7 +39,7 @@ unit: node_modules   # runs the unit tests
 	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
 
 update:  # update dependencies
-	yarn upgrade --latest
+	yarn upgrade-interactive --latest
 
 
 .DEFAULT_GOAL := help
