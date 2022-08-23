@@ -1,8 +1,8 @@
-import { SearchList } from "./search-list"
-import { RegexSearch } from "./searches/regex-search"
-import { StringSearch } from "./searches/string-search"
-import { TextAccumulator } from "./text-accumulator"
-import { SimpleReadableStream } from "./types/simple-readable-stream"
+import { SearchList } from "./search-list.js"
+import { RegexSearch } from "./searches/regex-search.js"
+import { StringSearch } from "./searches/string-search.js"
+import { TextAccumulator } from "./text-accumulator.js"
+import { SimpleReadableStream } from "./types/simple-readable-stream.js"
 
 /**
  * TextStreamSearch searches ReadableStreams for text and regexes.

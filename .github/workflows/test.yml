@@ -18,4 +18,5 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
       - run: yarn
         if: steps.cache-node.outputs.cache-hit != 'true'
+      - run: echo "./node_modules/.bin" >> "$GITHUB_PATH"
       - run: make test

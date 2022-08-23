@@ -1,4 +1,4 @@
-build: dist    # builds the codebase
+build: node_modules dist    # builds the codebase
 
 clean:   # removes all build artifacts
 	rm -rf dist

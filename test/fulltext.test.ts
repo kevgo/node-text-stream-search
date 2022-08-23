@@ -1,6 +1,6 @@
 import { strict as assert } from "assert"
 import { ReadableStream } from "memory-streams"
-import { TextStreamSearch } from "../src/text-stream-search"
+import { TextStreamSearch } from "../src/text-stream-search.js"
 
 test("TextStreamSearch.fullText()", function () {
   const stream = new ReadableStream("")
