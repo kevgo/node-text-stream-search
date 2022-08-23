@@ -40,7 +40,7 @@ dist: $(shell find src -type f)
 	touch dist
 
 node_modules: package.json yarn.lock
-	yarn
+	yarn --silent
 	touch node_modules
 
 tools/actionlint:
