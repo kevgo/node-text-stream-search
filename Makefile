@@ -26,11 +26,6 @@ lint: node_modules tools/actionlint  # lints all files
 test: node_modules build lint unit docs   # runs all tests
 .PHONY: test
 
-tools/actionlint:
-	curl -s https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
-	mkdir -p tools
-	mv actionlint tools
-
 unit: node_modules   # runs the unit tests
 	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
 
@@ -40,13 +35,18 @@ update:  # update dependencies
 
 #### helper tasks
 
+dist: $(shell find src -type f)
+	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
+	touch dist
+
 node_modules: package.json yarn.lock
 	yarn
 	touch node_modules
 
-dist: $(shell find src -type f)
-	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
-	touch dist
+tools/actionlint:
+	curl -s https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
+	mkdir -p tools
+	mv actionlint tools
 
 
 .SILENT:
