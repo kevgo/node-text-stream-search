@@ -7,7 +7,7 @@ import { SimpleReadableStream } from "./types/simple-readable-stream.js"
 /**
  * TextStreamSearch searches ReadableStreams for text and regexes.
  */
-export class TextStreamSearch {
+export default class TextStreamSearch {
   /** the output captured so far */
   private streamText: TextAccumulator
 

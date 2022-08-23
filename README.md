@@ -11,7 +11,7 @@ term (string or Regex) in a Node.js stream, i.e. anything that emits `data`
 events with Buffers or strings.
 
 ```javascript
-import { TextStreamSearch } from "text-stream-search"
+import TextStreamSearch from "text-stream-search"
 
 const streamSearch = new TextStreamSearch(myStream)
 
@@ -25,6 +25,8 @@ const matchText = await streamSearch.waitForRegex("listening at port \\d+.")
 // access the captured stream content
 const text = streamSearch.fullText()
 ```
+
+For a working example see [the end-to-end test](./test/fulltext.test.ts).
 
 ## Related projects
 
