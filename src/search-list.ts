@@ -1,4 +1,4 @@
-import type { Search } from "./types/search.js"
+import { Search } from "./types/search.js"
 
 /**
  * SearchList contains all current searches.
