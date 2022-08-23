@@ -27,7 +27,7 @@ test: node_modules build lint unit docs   # runs all tests
 .PHONY: test
 
 unit: node_modules   # runs the unit tests
-	${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
+	env NODE_NO_WARNINGS=1 ${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
 
 update:  # update dependencies
 	yarn upgrade-interactive --latest
