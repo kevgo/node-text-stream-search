@@ -1,5 +1,4 @@
-build: clean    # builds the codebase
-	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
+build: dist    # builds the codebase
 
 clean:   # removes all build artifacts
 	rm -rf dist
@@ -24,11 +23,7 @@ lint: node_modules tools/actionlint  # lints all files
 	${CURDIR}/node_modules/.bin/tsc --noEmit
 	${CURDIR}/tools/actionlint
 
-node_modules: package.json yarn.lock
-	yarn
-	touch node_modules
-
-test: node_modules lint unit docs   # runs all tests
+test: node_modules build lint unit docs   # runs all tests
 .PHONY: test
 
 tools/actionlint:
@@ -43,4 +38,16 @@ update:  # update dependencies
 	yarn upgrade-interactive --latest
 
 
+#### helper tasks
+
+node_modules: package.json yarn.lock
+	yarn
+	touch node_modules
+
+dist: $(shell find src -type f)
+	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
+	touch dist
+
+
+.SILENT:
 .DEFAULT_GOAL := help
