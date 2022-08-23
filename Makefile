@@ -26,6 +26,7 @@ lint: node_modules tools/actionlint  # lints all files
 
 node_modules: package.json yarn.lock
 	yarn
+	touch node_modules
 
 test: node_modules lint unit docs   # runs all tests
 .PHONY: test
