@@ -1,6 +1,6 @@
-import { TextAccumulator } from "../text-accumulator"
-import { RejectFunction } from "../types/reject-function"
-import { ResolveFunction } from "../types/resolve-function"
+import type { TextAccumulator } from "../text-accumulator.js"
+import type { RejectFunction } from "../types/reject-function.js"
+import type { ResolveFunction } from "../types/resolve-function.js"
 
 /**
  * StringSearch is the search for a particular string in the text stream.
