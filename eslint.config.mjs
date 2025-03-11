@@ -30,13 +30,7 @@ export default [
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
       "no-empty-function": "error",
-      "prefer-const": [
-        "error",
-        {
-          destructuring: "any",
-          ignoreReadBeforeAssign: false
-        }
-      ]
+      "prefer-const": "error"
     }
   },
   perfectionist.configs["recommended-natural"]
