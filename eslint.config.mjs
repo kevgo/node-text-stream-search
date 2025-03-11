@@ -7,7 +7,7 @@ import perfectionist from "eslint-plugin-perfectionist"
 export default [
   {
     files: ["src/*.ts"],
-    ignores: ["node_modules/", ".git/", "out/", "text-runner/"],
+    ignores: ["node_modules/", ".git/", "dist/", "text-runner/"],
     languageOptions: {
       ecmaVersion: "latest",
       globals: {
