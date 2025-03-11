@@ -39,11 +39,10 @@ Please submit bugs, ideas, or improvements via
 [an issue](https://github.com/kevgo/node-text-stream-accumulator/issues/new) or
 pull request.
 
-- run all tests: <code type="make/command">make test</code>
-- run unit tests: <code type="make/command">make unit</code>
-- run linters: <code type="make/command">make lint</code>
-- fix formatting issues: <code type="make/command">make lint</code>
-- see all available make commands: <code type="make/command">make help</code>
+- run all tests: <code type="npm/script-call">npm run test</code>
+- run unit tests: <code type="npm/script-call">npm run unit</code>
+- run linters: <code type="npm/script-call">npm run lint</code>
+- fix formatting issues: <code type="npm/script-call">npm run lint</code>
 
 #### Deploy a new version
 
