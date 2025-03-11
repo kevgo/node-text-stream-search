@@ -1,9 +1,12 @@
 {
   "typescript": {
     "lineWidth": 120,
-    "semiColons": "asi"
+    "semiColons": "asi",
+    "trailingCommas": "never"
   },
-  "json": {},
+  "json": {
+    "trailingCommas": "never"
+  },
   "markdown": {
     "textWrap": "always"
   },
