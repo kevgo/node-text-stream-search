@@ -2,7 +2,8 @@
   "typescript": {
     "lineWidth": 120,
     "semiColons": "asi",
-    "trailingCommas": "never"
+    "trailingCommas": "never",
+    "quoteStyle": "preferDouble"
   },
   "json": {
     "trailingCommas": "never"
