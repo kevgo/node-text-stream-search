@@ -8,14 +8,14 @@ import { SimpleReadableStream } from "./types/simple-readable-stream.js"
  * TextStreamSearch searches ReadableStreams for text and regexes.
  */
 export default class TextStreamSearch {
-  /** the output captured so far */
-  private streamText: TextAccumulator
-
   /**
    * Subscriptions contains all the requests from users of this library
    * to be notified when a particular text or regex shows up in the text stream.
    */
   private searchList: SearchList
+
+  /** the output captured so far */
+  private streamText: TextAccumulator
 
   constructor(stream: SimpleReadableStream) {
     this.streamText = new TextAccumulator()
@@ -29,18 +29,6 @@ export default class TextStreamSearch {
   }
 
   /**
-   * WaitForText returns a promise that resolves with the matching text
-   * when the given text shows up in the observed stream.
-   * If a timeout is given, aborts after the given duration.
-   */
-  waitForText(text: string, timeout?: number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      this.searchList.push(new StringSearch(text, resolve, reject, this.streamText, timeout))
-      this.searchList.scan()
-    })
-  }
-
-  /**
    * WaitForRegex returns a promise that resolves with the matching text
    * when the given RegExp shows up in observed stream.
    * If a timeout is given, aborts after the given duration.
@@ -48,6 +36,18 @@ export default class TextStreamSearch {
   waitForRegex(regex: RegExp, timeout?: number): Promise<string> {
     return new Promise((resolve, reject) => {
       this.searchList.push(new RegexSearch(regex, resolve, reject, this.streamText, timeout))
+      this.searchList.scan()
+    })
+  }
+
+  /**
+   * WaitForText returns a promise that resolves with the matching text
+   * when the given text shows up in the observed stream.
+   * If a timeout is given, aborts after the given duration.
+   */
+  waitForText(text: string, timeout?: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.searchList.push(new StringSearch(text, resolve, reject, this.streamText, timeout))
       this.searchList.scan()
     })
   }
