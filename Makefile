@@ -30,7 +30,8 @@ unit: node_modules   # runs the unit tests
 	env NODE_NO_WARNINGS=1 ${CURDIR}/node_modules/.bin/mocha --reporter dot test/*.ts
 
 update:  # update dependencies
-	yarn upgrade-interactive --latest
+	npm exec -- npm-check-updates -u
+	npm install
 
 
 #### helper tasks
@@ -39,8 +40,8 @@ dist: $(shell find src -type f)
 	${CURDIR}/node_modules/.bin/tsc -p tsconfig-build.json
 	touch dist
 
-node_modules: package.json yarn.lock
-	yarn --silent
+node_modules: package.json package-lock.json
+	npm install
 	touch node_modules
 
 tools/actionlint:
