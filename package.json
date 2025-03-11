@@ -2,10 +2,9 @@
   "name": "text-stream-search",
   "version": "5.0.0",
   "description": "Searches for occurrences of a given search term in Node.js text streams",
-  "homepage": "https://github.com/Originate/node-text-stream-search#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Originate/node-text-stream-search.git"
+    "url": "git+ssh://git@github.com/kevgo/node-text-stream-search.git"
   },
   "license": "ISC",
   "author": "Kevin Goslar",
