@@ -11,7 +11,7 @@ docs: node_modules build   # runs the documentation tests
 	${CURDIR}/node_modules/.bin/text-run --offline --format=dot
 
 fix: node_modules  # fixes the fixable issues in the code base
-	${CURDIR}/node_modules/.bin/prettier --write .
+	npm exec -- dprint fmt
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts --fix .
 
 help:   # prints all make targets
@@ -19,7 +19,7 @@ help:   # prints all make targets
 
 lint: node_modules tools/actionlint  # lints all files
 	${CURDIR}/node_modules/.bin/eslint --ext=.ts .
-	${CURDIR}/node_modules/.bin/prettier --check .
+	npm exec -- dprint check
 	${CURDIR}/node_modules/.bin/tsc --noEmit
 	${CURDIR}/tools/actionlint
 
