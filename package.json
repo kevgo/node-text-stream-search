@@ -16,7 +16,7 @@
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
     "clean": "rm -rf dist",
-    "coverage": "nyc node --test --import tsx test/*.test.ts && nyc report --reporter=text-lcov | node_modules/.bin/coveralls",
+    "coverage": "nyc node --test --import tsx test/*.test.ts && nyc report --reporter=text-lcov | coveralls",
     "docs": "text-runner",
     "fix": "sort-package-json --quiet && dprint fmt && eslint --fix",
     "lint": "tsc --noEmit && eslint && dprint check && sort-package-json --check --quiet && tools/actionlint",
