@@ -1,5 +1,6 @@
-import { strict as assert } from "assert"
 import { ReadableStream } from "memory-streams"
+import assert from "node:assert/strict"
+import { suite, test } from "node:test"
 import * as util from "util"
 
 import TextStreamSearch from "../src/text-stream-search.js"
