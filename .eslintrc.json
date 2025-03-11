@@ -1,18 +1,27 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "typescript-sort-keys"],
+  "plugins": [
+    "@typescript-eslint",
+    "typescript-sort-keys"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:typescript-sort-keys/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript",
-    "prettier"
+    "plugin:import/typescript"
   ],
   "rules": {
-    "import/order": ["error", { "alphabetize": { "order": "asc" } }],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
     "import/no-unresolved": "error"
   },
   "parserOptions": {
@@ -20,7 +29,9 @@
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts"]
+      "@typescript-eslint/parser": [
+        ".ts"
+      ]
     },
     "import/resolver": {
       "typescript": {
