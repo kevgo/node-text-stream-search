@@ -23,7 +23,7 @@
     "lint": "eslint && dprint check && tsc --noEmit && tools/actionlint",
     "prepublishOnly": "npm run build",
     "setup": "curl -s https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash && mkdir -p tools && mv actionlint tools",
-    "test": "npm run build && npm run lint && npm run unit && npm run docs",
+    "test": "npm run build && npm run fix && npm run lint && npm run unit && npm run docs",
     "unit": "mocha --reporter dot test/*.ts",
     "update": "npm-check-updates -u && npm install"
   },
