@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - id: cache-node
         uses: actions/cache@v4
         with:
@@ -19,4 +22,5 @@ jobs:
       - run: npm install
         if: steps.cache-node.outputs.cache-hit != 'true'
       - run: echo "./node_modules/.bin" >> "$GITHUB_PATH"
+      - run: npm run setup
       - run: npm run test
