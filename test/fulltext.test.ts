@@ -1,10 +1,10 @@
-import assert from "node:assert/strict"
 import { ReadableStream } from "memory-streams"
+import assert from "node:assert/strict"
 import { test } from "node:test"
 
 import TextStreamSearch from "../src/text-stream-search.js"
 
-test("TextStreamSearch.fullText()", function () {
+test("TextStreamSearch.fullText()", function() {
   const stream = new ReadableStream("")
   const search = new TextStreamSearch(stream)
   assert.equal(search.fullText(), "", "should start out empty")
