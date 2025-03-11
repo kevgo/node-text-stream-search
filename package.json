@@ -16,7 +16,7 @@
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
     "clean": "rm -rf dist",
-    "coverage": "nyc node --test --import tsx test/*.test.ts && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc node --test --import tsx test/*.test.ts && nyc report --reporter=text-lcov",
     "docs": "text-runner",
     "fix": "sort-package-json --quiet && dprint fmt && eslint --fix",
     "lint": "tsc --noEmit && eslint && dprint check && sort-package-json --check --quiet && tools/actionlint",
@@ -37,7 +37,7 @@
     "eslint-plugin-perfectionist": "4.10.1",
     "memory-streams": "0.1.3",
     "npm-check-updates": "17.1.15",
-    "nyc": "15.1.0",
+    "nyc": "17.1.0",
     "sort-package-json": "3.0.0",
     "source-map-support": "0.5.21",
     "text-runner": "7.1.0",
