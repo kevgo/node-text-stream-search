@@ -40,7 +40,7 @@ export class RegexSearch implements Search {
   }
 
   /** Scan checks the stream text for occurrences of the searchRegexp. */
-  scan(): void {
+  scan() {
     const matches = this.searchRegexp.exec(this.text.toString())
     if (matches) {
       const match = matches[0]

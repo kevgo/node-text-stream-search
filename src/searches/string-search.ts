@@ -46,7 +46,7 @@ export class StringSearch implements Search {
    * Checks the given text for the searchText.
    * Calls the resolve function when it finds it.
    */
-  scan(): void {
+  scan() {
     if (this.text.toString().includes(this.searchText)) {
       this.resolve(this.searchText)
     }
