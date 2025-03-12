@@ -1,6 +1,7 @@
 import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
+import { Search } from "../types/search.js"
 
 /**
  * StringSearch is the search for a particular string in the text stream.
@@ -8,7 +9,7 @@ import { ResolveFunction } from "../types/resolve-function.js"
  * It reports success to the given resolve function once when it finds the query string.
  * When reaching the given timeoutDuration, it abourts the search and calls the given reject function.
  */
-export class StringSearch {
+export class StringSearch implements Search {
   /** the resolve function to call when the searchText is found */
   resolve: ResolveFunction
 
