@@ -4,8 +4,8 @@ import { ResolveFunction } from "../types/resolve-function.js"
 
 /**
  * StringSearch is the search for a particular string in the text stream.
- * The search is over once the s
- * It reports success to its the  the given resolve function once when it finds the query string.
+ * The search is over once the string is found.
+ * It reports success to the given resolve function once when it finds the query string.
  * When reaching the given timeoutDuration, it abourts the search and calls the given reject function.
  */
 export class StringSearch {
