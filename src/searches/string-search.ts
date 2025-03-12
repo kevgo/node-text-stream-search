@@ -55,7 +55,8 @@ export class StringSearch {
   private onTimeout() {
     this.reject(
       new Error(
-        `Text "${this.searchText}" not found within ${this.timeoutDuration ?? -1
+        `Text "${this.searchText}" not found within ${
+          this.timeoutDuration ?? -1
         } ms. The captured text so far is:\n${this.text.toString()}`
       )
     )
