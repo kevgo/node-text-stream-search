@@ -1,11 +1,12 @@
 import { TextAccumulator } from "../text-accumulator.js"
 import { RejectFunction } from "../types/reject-function.js"
 import { ResolveFunction } from "../types/resolve-function.js"
+import { Search } from "../types/search.js"
 
 /**
  * RegexSearch looks for the given regex in the text stream.
  */
-export class RegexSearch {
+export class RegexSearch implements Search {
   /** the resolve function to call when the searchText is found */
   resolve: ResolveFunction
 
