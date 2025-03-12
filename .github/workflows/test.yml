@@ -24,3 +24,5 @@ jobs:
       - run: echo "./node_modules/.bin" >> "$GITHUB_PATH"
       - run: npm run setup
       - run: npm run test
+      - run: npm run coverage
+      - uses: coverallsapp/github-action@v2
