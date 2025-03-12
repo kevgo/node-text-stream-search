@@ -31,19 +31,3 @@ For a working example see [the end-to-end test](./test/fulltext.test.ts).
 
 - [StreamSnitch](https://github.com/dmotz/stream-snitch): does the same thing
   with regular expressions, but is buggy and blocks the event queue
-
-## Development
-
-Please submit bugs, ideas, or improvements via
-[an issue](https://github.com/kevgo/node-text-stream-accumulator/issues/new) or
-pull request.
-
-- run all tests: <code type="npm/script-call">npm run test</code>
-- run unit tests: <code type="npm/script-call">npm run unit</code>
-- run linters: <code type="npm/script-call">npm run lint</code>
-- fix formatting issues: <code type="npm/script-call">npm run lint</code>
-
-#### Deploy a new version
-
-- update the version in `package.json` and commit to `main`
-- run `npm publish`
